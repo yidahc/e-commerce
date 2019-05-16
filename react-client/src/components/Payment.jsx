@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 //import Products from './Products.jsx';
 
@@ -14,9 +13,8 @@ class Payment extends React.Component {
   render () {
     return (  
       <div>I am the payment component
-</div>
+      </div>
     )
   }
 }
 export default Payment;
-ReactDOM.render(<Payment />, document.getElementById('payment'));
