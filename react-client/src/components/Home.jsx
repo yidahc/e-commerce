@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink} from 'react-router-dom';
 //import Products from './Products.jsx';
 
 class Home extends React.Component {
@@ -10,8 +11,10 @@ class Home extends React.Component {
   }
   render () {
     return (  
-      <div>I am the home Component</div>
-    )
+      <div>
+        <NavLink to="/products"><button>products</button></NavLink>
+      </div>
+    );
   }
 }
 export default Home;
