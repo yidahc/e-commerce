@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
+import Home from './components/Home.jsx';
+import Payment from './components/Payment.jsx';
+import Products from './components/Products.jsx';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +14,7 @@ class App extends React.Component {
     }
   }
 
+ /*
   componentDidMount() {
     $.ajax({
       url: '/items', 
@@ -24,12 +28,18 @@ class App extends React.Component {
       }
     });
   }
-
+*/
   render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
-    </div>)
+    return (      
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/Products' render={(props) => <Products {...props} postData={this.postData} />} />
+          <Route exact path='/Payment' render={(props) => <Payment {...props} postData={this.postData} />} />
+        </Switch>
+      </div>
+    </BrowserRouter>)
   }
 }
 
