@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink} from 'react-router-dom';
-//import Products from './Products.jsx';
+import MainCarousel from './MainCarousel.jsx';
 
 class Home extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class Home extends React.Component {
   render () {
     return (  
       <div>
+        <MainCarousel />
         <NavLink to="/products"><button>products</button></NavLink>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink} from 'react-router-dom';
+
 //import Products from './Products.jsx';
 
 class Products extends React.Component {
@@ -12,7 +13,7 @@ class Products extends React.Component {
   render () {
     return (  
       <div>I am the Products component
-        <NavLink to="/payment"><button>payment</button></NavLink>
+        <NavLink to="/cart"><button>cart</button></NavLink>
       </div>
     )
   }
