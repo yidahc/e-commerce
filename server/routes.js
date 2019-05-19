@@ -1,6 +1,6 @@
 const db = require('../database-mysql/index.js');
 const path = require('path');
-const { User } = require('../database-mongo');
+const { User } = require('../database-mongo/models/user');
 
 module.exports.fallback = (req, res) => {
     res.sendFile(path.join(__dirname, '/../react-client/dist/index.html'), function(err) {
@@ -15,7 +15,7 @@ module.exports.getUser = (req, res)=>{
   user.save((err,doc)=>{ // doc is the response from the server with all user data in an object
     if (err) return res.json({success:false,err});
     res.status(200).json({
-        success: true,
+        success: true, 
         userdata: doc
     })
   })
