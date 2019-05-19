@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE)
 
 const bcrypt = require('bcrypt'); // used to hash passwords
+const jwt = require('jsonwebtoken'); // used to generate tokens
 const SALT_I = 10;
 
 const userSchema = mongoose.Schema({
@@ -46,13 +47,16 @@ const userSchema = mongoose.Schema({
     }
   });
   
-  userSchema.pre('save', function(next){ // next is function in server/config that will run after this function
-    var user = this; //es5 requires us to specify what 'this' is since it is not automatically 
-    //bound at runtime
-    if(user.isModified('password')){ //isModified is a mongo method for when a user is trying to modify something
+  userSchema.pre('save', function(next){ 
+    // next is function in server/config that will run after this function (cb)
+    var user = this; 
+    //es5 requires us to bind 'this' to the instance of User that we are running this callback on
+    if(user.isModified('password')){ 
+      //isModified is a mongo method for when a user is trying to modify something
       bcrypt.genSalt(SALT_I, function(err, salt){ // generating hash for user password
         if (err) return next(err); // if error, continue to next function with err as parameter
-        bcrypt.hash(user.password, salt, function(err, hash){ //with es6, one would write "this.password" and "this.isModified"
+        bcrypt.hash(user.password, salt, function(err, hash){ 
+          //with es6, one would write "this.password" and "this.isModified"
           if (err) return next(err); // next function will return "success: false"
           user.password = hash; // generating hash for user password
           next(); // continue to next function
@@ -62,6 +66,23 @@ const userSchema = mongoose.Schema({
       next() // if they are modifying their password, we regenerate a hash, else we move to next function
     }
   })
+
+  userSchema.methods.comparePassword = function (candidatePassword, cb){
+    //creating a new mongo method to compare user passwords
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch){ // bcrypt method to compare passwords
+      if (err) return cb(err);
+      cb(null, isMatch)
+      // isMatch returns a boolean
+    })
+  }
+
+  userSchema.methods.generateToken = function () {
+    var user = this;
+    var token = jwt.sign(user._id.teHexString(), process.env.SECRET)
+   // .sign (to create token/hash of something) and .teHexString (to make something into string) are jwt methods
+    user.token = token;
+    user.save()
+  }
 
   const User = mongoose.model('User', userSchema);
   module.exports= { User }

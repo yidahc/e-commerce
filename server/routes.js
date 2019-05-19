@@ -10,7 +10,7 @@ module.exports.fallback = (req, res) => {
     })
 };
 
-module.exports.getUser = (req, res)=>{
+module.exports.postUser = (req, res) => {
   const user = new User(req.body) // returns a new user with parameters from database
   user.save((err,doc)=>{ // doc is the response from the server with all user data in an object
     if (err) return res.json({success:false,err});
@@ -21,12 +21,21 @@ module.exports.getUser = (req, res)=>{
   })
 }
 
-module.exports.getItems = (req, res) => {
-    db.selectAll(function(err, data) {
-      if(err) {
-        res.sendStatus(500);
-      } else {
-        res.json(data);
-      }
-    });
+module.exports.postLogin = (req, res) => {
+  User.findOne({'email':req.body.email}, (err, user)=>{ 
+ //findOne is a method from mongo that will return either the specified user or null
+    if (!user) return res.json({loginSuccess:false, message:'Auth failed, email not found'})
+    // User refers to the constructor from database, 
+    // user refers to a specific instance (specific user trying to login)
+    user.comparePassword(req.body.password, (err, isMatch)=>{
+    // compare Password is a mongo method created in the User model
+      if (!isMatch) return res.json({loginSuccess:false, message:'Wrong password'});
+      user.generateToken((err, user) => {
+
+      })
+    })
+  })
 }
+   // find the email
+   // check password
+   // generate new token

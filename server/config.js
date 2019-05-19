@@ -19,7 +19,9 @@ app.get('/*', route.fallback);
 
 app.get('/items', route.getItems);
 
-app.post('/api/users/register', route.getUser); 
+app.post('/api/users/register', route.postUser); 
 // generates new user for every post request when creating a new account 
+
+app.post('/api/users/login', route.postLogin); 
 
 module.exports = app;
