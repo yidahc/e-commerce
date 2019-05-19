@@ -31,11 +31,14 @@ module.exports.postLogin = (req, res) => {
     // compare Password is a mongo method created in the User model
       if (!isMatch) return res.json({loginSuccess:false, message:'Wrong password'});
       user.generateToken((err, user) => {
-
+        if (err) return res.status(400).send(err);
+        res.cookie('w_auth',user.token).status(200).json({ 
+        // storing token as a cookie (not local storage)
+        // after user logs out, cookie remains however the token is no longer valid (everything is hashed)
+          loginSuccess: true
+        })
       })
     })
   })
 }
-   // find the email
-   // check password
-   // generate new token
+

@@ -16,9 +16,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/*', route.fallback); 
 // react-router fallback so we can reload without visiting root
-
+/*
 app.get('/items', route.getItems);
-
+*/
 app.post('/api/users/register', route.postUser); 
 // generates new user for every post request when creating a new account 
 

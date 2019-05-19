@@ -65,7 +65,7 @@ const userSchema = mongoose.Schema({
     } else {
       next() // if they are modifying their password, we regenerate a hash, else we move to next function
     }
-  })
+  });
 
   userSchema.methods.comparePassword = function (candidatePassword, cb){
     //creating a new mongo method to compare user passwords
@@ -76,12 +76,16 @@ const userSchema = mongoose.Schema({
     })
   }
 
-  userSchema.methods.generateToken = function () {
+  userSchema.methods.generateToken = function (cb) {
     var user = this;
-    var token = jwt.sign(user._id.teHexString(), process.env.SECRET)
-   // .sign (to create token/hash of something) and .teHexString (to make something into string) are jwt methods
+    var token = jwt.sign(user._id.toHexString(),process.env.SECRET)
+   // .sign (to create token/hash of something) and .toHexString (to make something into string) are jwt methods
     user.token = token;
-    user.save()
+    // saving response from jwt to database
+    user.save(function(err, user){
+      if(err) return cb(err);
+      cb(null, user);
+    })
   }
 
   const User = mongoose.model('User', userSchema);
