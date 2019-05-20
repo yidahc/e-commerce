@@ -44,3 +44,4 @@ module.exports.postLogin = (req, res) => {
   })
 }
 
+//module.exports.getAuth = (req, res) => {}
