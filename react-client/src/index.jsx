@@ -4,7 +4,8 @@ import $ from 'jquery';
 import Home from './components/Home.jsx';
 import Payment from './components/Payment.jsx';
 import Products from './components/Products.jsx';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Cart from './components/Cart.jsx';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends React.Component {
           <Route exact path='/' component={Home} />
           <Route exact path='/Products' render={(props) => <Products {...props} postData={this.postData} />} />
           <Route exact path='/Payment' render={(props) => <Payment {...props} postData={this.postData} />} />
+          <Route exact path='/Cart' component={Cart} />
         </Switch>
       </div>
     </BrowserRouter>)
