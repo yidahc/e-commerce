@@ -43,7 +43,7 @@ const userSchema = mongoose.Schema({
       default: 0 // either you are an administrator or a user
     }, // 0 is for user and that is the default for any new account
     token: {
-      type: Number 
+      type: String 
     }
   });
   
@@ -78,7 +78,7 @@ const userSchema = mongoose.Schema({
 
   userSchema.methods.generateToken = function (cb) {
     var user = this;
-    var token = jwt.sign(user._id.toHexString(),process.env.SECRET)
+    var token = jwt.sign(user._id.toHexString(), process.env.SECRET)
    // .sign (to create token/hash of something) and .toHexString (to make something into string) are jwt methods
     user.token = token;
     // saving response from jwt to database
