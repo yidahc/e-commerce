@@ -12,14 +12,21 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
+
+const { auth } = require('./middleware/auth');
+
 // UNCOMMENT FOR ANGULAR
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
+
+app.get('/api/users/auth', auth, route.getAuth);
+
+app.get('/api/users/logout', auth, route.logOut);
+
 app.get('/*', route.fallback); 
 // react-router fallback so we can reload without visiting root
-
-//app.get('/api/users/auth', route.getAuth);
+// must be bellow all other get requests, because it catches all get requests that start with "/"
 
 app.post('/api/users/register', route.postUser); 
 // generates new user for every post request when creating a new account 
