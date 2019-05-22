@@ -17,6 +17,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.17.2",
     "bootstrap": "^4.3.1",

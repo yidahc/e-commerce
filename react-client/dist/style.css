@@ -1,162 +1,67 @@
-body, .contact {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  background: lightblue;
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  /* position: fixed; */
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
 }
 
-body button, .contact button {
-  background: #104727;
-}
-
-body button:hover, .contact button:hover {
-  background: red;
-}
-
-body button::after, .contact button::after {
-  content: "hello";
-}
-
-.contact {
-  background: pink;
-  width: 200% / 2%;
-  height: 80%;
-}
-
-.carousel {
-  height: 400px;
-  width: 750px;
-  margin: 0 auto;
-}
-
-.carousel figure {
-  height: 400px;
-  background-size: cover;
-  position: relative;
-}
-
-.carousel figure::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  /* position: fixed; */
   bottom: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.5)));
-  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
-  opacity: 0;
-  will-change: opacity;
-  -webkit-transition: opacity 250ms ease-in-out;
-  transition: opacity 250ms ease-in-out;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
 }
 
-.carousel-inner {
-  border-radius: 3px;
-}
-
-.carousel .carousel-control {
-  fill: #fff;
-  background-image: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transform: translate(0);
-          transform: translate(0);
-  will-change: transform;
-  -webkit-transition: -webkit-transform 250ms ease-in;
-  transition: -webkit-transform 250ms ease-in;
-  transition: transform 250ms ease-in;
-  transition: transform 250ms ease-in, -webkit-transform 250ms ease-in;
-  opacity: 1;
-}
-
-.carousel .carousel-control.left {
-  -webkit-transform: translate(-100%);
-          transform: translate(-100%);
-}
-
-.carousel .carousel-control.right {
-  -webkit-transform: translate(100%);
-          transform: translate(100%);
-}
-
-.carousel .carousel-control svg {
-  height: 64px;
-}
-
-.carousel-indicators {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  z-index: 15;
-  margin: 0;
-  padding: 30px;
-  text-align: right;
-}
-
-.carousel-indicators li {
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid white;
-}
-
-.carousel-indicators li.active {
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
   background-color: white;
-  border: 1px solid white;
 }
 
-.carousel-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  padding: 25px;
-  color: #fff;
-  text-align: left;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  will-change: transform;
-  -webkit-transition: -webkit-transform 250ms ease-in;
-  transition: -webkit-transform 250ms ease-in;
-  transition: transform 250ms ease-in;
-  transition: transform 250ms ease-in, -webkit-transform 250ms ease-in;
-  font-size: 3em;
-  margin: 0;
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
 }
 
-.carousel-caption::first-letter {
-  text-transform: uppercase;
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
 }
 
-.carousel:hover .carousel-control.left, .carousel:hover .carousel-control.right {
-  -webkit-transform: translate(0);
-          transform: translate(0);
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
 }
 
-.carousel:hover figure::before {
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
-
-.carousel:hover figure .carousel-caption {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-/*# sourceMappingURL=style.css.map */
