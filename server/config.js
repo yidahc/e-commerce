@@ -14,6 +14,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 
 const { auth } = require('./middleware/auth');
+const { admin } = require('./middleware/admin')
 
 // UNCOMMENT FOR ANGULAR
 // app.use(express.static(__dirname + '/../angular-client'));

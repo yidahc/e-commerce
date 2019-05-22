@@ -17,7 +17,16 @@ module.exports.getAuth = (req, res) => {
 };
 
 module.exports.logOut = (req, res) => {
-  User.findOneAndUpdate()
+  User.findOneAndUpdate(
+    {_id: req.user._id},
+    {token: ''},
+    (err,doc )=>{
+        if(err) return res.json({success: false, err});
+        return res.status(200).send({
+            success: true
+        })
+    }
+  )
 }
 
 module.exports.fallback = (req, res) => {
