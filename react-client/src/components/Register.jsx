@@ -1,11 +1,13 @@
 import React from 'react';
 
-class Login extends React.Component {
+class Register extends React.Component {
     constructor(props) {
       super(props);
       this.state={
         email: '',
         password: '',
+        name: '',
+        lastname: '',
         showForm: false
       };
       this.handleInput = this.handleInput.bind(this);
@@ -15,6 +17,15 @@ class Login extends React.Component {
     }
     openForm() { this.setState ({ showForm: !this.state.showForm }) };
     
+    handleInput(event) {
+      const {target} = event;
+      const {name, value} = target;
+    
+      this.setState({
+        [name]:value
+      }); // name and value are in target
+    }
+
     postData (url= '', data= {}) {
       return fetch(url, {
         method: 'POST',
@@ -29,37 +40,49 @@ class Login extends React.Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      const { email, password } = this.state;
-      this.postData('./api/users/login', {
+      const { email, password, name, lastname } = this.state;
+      this.postData('./api/users/register', {
         email: email,
         password: password,
+        name: name,
+        lastname: lastname,
     });
   
       this.setState({
         email: '',
         password: '',
+        name: '',
+        lastname: '',
       });
     };
 
-    handleInput(event) {
-      const {target} = event;
-      const {name, value} = target;
-    
-      this.setState({
-        [name]:value
-      }); // name and value are in target
-    }
-
-   
     render () {
-      const { email, password } = this.state;
+      const { email, password, name, lastname } = this.state;
         return (
-          <span>   
+        <span>   
           Hello   
           <button className="open-button" onClick={this.openForm}>Open Form</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
           <form action="/action_page.php" className="form-container">
-          <h1>Login</h1>
+          <h1>Register</h1>
+            <label><b>First Name</b></label>
+              <input 
+                type="text" 
+                placeholder="Enter First Name" 
+                name="name" 
+                value={name} 
+                onChange={this.handleInput}
+                required
+              />
+            <label><b>Last Name</b></label>
+              <input 
+                type="text" 
+                placeholder="Enter Last Name" 
+                name="lastname" 
+                value={lastname} 
+                onChange={this.handleInput}
+                required
+              />
             <label><b>Email</b></label>
               <input 
                 type="text" 
@@ -78,7 +101,7 @@ class Login extends React.Component {
                 onChange={this.handleInput}
                 required
               />
-            <button type="submit" className="btn" onClick={this.handleSubmit}>Login</button>
+            <button type="submit" className="btn" onClick={this.handleSubmit}>Register</button>
           <button type="button" className="btn cancel" onClick={this.openForm}>Close</button>
         </form>
         </div>
@@ -87,4 +110,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default Register;
