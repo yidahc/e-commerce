@@ -60,24 +60,23 @@ class Register extends React.Component {
       const { email, password, name, lastname } = this.state;
         return (
         <span>   
-          Hello   
-          <button className="open-button" onClick={this.openForm}>Open Form</button>
+          <button className="open-button" onClick={this.openForm}>Crea Una Cuenta</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
           <form action="/action_page.php" className="form-container">
           <h1>Register</h1>
-            <label><b>First Name</b></label>
+            <label><b>Nombre</b></label>
               <input 
                 type="text" 
-                placeholder="Enter First Name" 
+                placeholder="Nombre" 
                 name="name" 
                 value={name} 
                 onChange={this.handleInput}
                 required
               />
-            <label><b>Last Name</b></label>
+            <label><b>Apellido</b></label>
               <input 
                 type="text" 
-                placeholder="Enter Last Name" 
+                placeholder="Apellido" 
                 name="lastname" 
                 value={lastname} 
                 onChange={this.handleInput}
@@ -86,23 +85,23 @@ class Register extends React.Component {
             <label><b>Email</b></label>
               <input 
                 type="text" 
-                placeholder="Enter Email" 
+                placeholder="Email" 
                 name="email" 
                 value={email} 
                 onChange={this.handleInput}
                 required
               />
-            <label><b>Password</b></label>
+            <label><b>Contraseña</b></label>
               <input 
                 type="password" 
-                placeholder="Enter Password" 
+                placeholder="Contraseña" 
                 name="password" 
                 value={password} 
                 onChange={this.handleInput}
                 required
               />
-            <button type="submit" className="btn" onClick={this.handleSubmit}>Register</button>
-          <button type="button" className="btn cancel" onClick={this.openForm}>Close</button>
+            <button type="submit" className="btn" onClick={this.handleSubmit}>Crear Cuenta</button>
+          <button type="button" className="btn cancel" onClick={this.openForm}>Cerrar</button>
         </form>
         </div>
         </span>

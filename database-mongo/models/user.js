@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-
+/*
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE)
-
+*/
 const bcrypt = require('bcrypt'); // used to hash passwords
 const jwt = require('jsonwebtoken'); // used to generate tokens
 const SALT_I = 10;

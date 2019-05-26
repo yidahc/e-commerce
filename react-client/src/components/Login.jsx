@@ -34,7 +34,7 @@ class Login extends React.Component {
         email: email,
         password: password,
     });
-  
+      
       this.setState({
         email: '',
         password: '',
@@ -54,9 +54,8 @@ class Login extends React.Component {
     render () {
       const { email, password } = this.state;
         return (
-          <span>   
-          Hello   
-          <button className="open-button" onClick={this.openForm}>Open Form</button>
+          <span>      
+          <button className="open-button" onClick={this.openForm}>Iniciar Sesion</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
           <form action="/action_page.php" className="form-container">
           <h1>Login</h1>
