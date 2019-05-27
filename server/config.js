@@ -20,7 +20,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 const path = require('path');
 const { User } = require('../database-mongo/models/user');
 const { Brand } = require('../database-mongo/models/brand');
-const { Category } = require('./models/category');
+const { Category } = require('../database-mongo/models/category');
+const { Product } = require('../database-mongo/models/product');
 
 
 const { auth } = require('./middleware/auth');
@@ -30,6 +31,58 @@ const { admin } = require('./middleware/admin')
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
+app.get('/api/product/articles', (req, res)=>{
+  let order = req.query.order ? req.query.order : 'asc';
+  let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
+  let limit = req.query.limit ? parseInt(req.query.limit) : 100;
+
+  Product.find().
+  populate('brand').
+  populate('category').
+  sort([[sortBy, order]]).
+  limit(limit).
+  exec((err, articles)=>{
+      if (err) return res.status(400).send(err);
+      res.send(articles)
+  })
+
+})
+
+// /api/product/article?id={id1},{id2}&type={array/single}
+// api/product/articles_by_id5cea0ac81355d548da92cdea,5cea1001c4509a4ccd9d661c&type=array
+app.get('/api/product/articles_by_id', (req, res)=>{
+  //we are able to query because we are using bodyParser.urlencoded
+  let type = req.query.type;
+  let items = req.query.id;
+  if(type === "array"){
+      let ids = req.query.id.split(',');
+      // spliting array of ids in query and seperating by comma
+      items = [];
+      items = ids.map(item=>{
+          return mongoose.Types.ObjectId(item)
+          // converting ids to ObjectIDs and pushing them inside of item array
+      })
+  }
+  Product.
+  find({'_id':{$in:items}}).
+  populate('brand').
+  populate('category').
+  exec((err, docs)=>{
+      return res.status(200).send(docs)
+  })
+});
+
+app.post('/api/product/article', auth, (req, res) => {
+  const product = new Product(req.body);
+  product.save((err, doc) => {
+      if (err) return res.json({success: false, err});
+      res.status(200).json({
+          success: true, 
+          article: doc
+      })
+
+  })
+})
 
 app.post('/api/product/category', auth, admin, (req, res)=>{
   const category = new Category(req.body);
@@ -40,14 +93,14 @@ app.post('/api/product/category', auth, admin, (req, res)=>{
           category: doc
       })
   })
-})
+});
 
-app.get('/api/product/category', (req, res)=>{
+app.get('/api/product/categories', (req, res)=>{
   Category.find({}, (err, category)=>{
       if(err) return res.status(400).send(err);
       res.status(200).send(category)
   })
-})
+});
 
 app.post('/api/product/brand', auth, admin, (req, res) => {
   const brand = new Brand(req.body);
