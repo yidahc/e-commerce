@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import axios from 'axios';
 import Home from './components/Home.jsx';
 import Payment from './components/Payment.jsx';
 import Products from './components/Products.jsx';
@@ -13,6 +14,26 @@ class App extends React.Component {
     this.state = { 
       items: []
     }
+    this.postData = this.postData.bind(this)
+  }
+/*
+  componentDidMount() {
+    axios.get('/api/users/auth').then(response => {
+      console.log(response)
+    })
+  }
+*/
+
+  postData (url= '', data= {}) {
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(() => this.componentDidMount())
+      .catch(err => console.error(err));
   }
 
  /*

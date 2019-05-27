@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-
+/*
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE)
-
+*/
 const bcrypt = require('bcrypt'); // used to hash passwords
 const jwt = require('jsonwebtoken'); // used to generate tokens
 const SALT_I = 10;
@@ -85,6 +85,17 @@ const userSchema = mongoose.Schema({
     user.save(function(err, user){
       if(err) return cb(err);
       cb(null, user);
+    })
+  }
+
+  userSchema.statics.findByToken = function(token, cb) {
+    var user = this;
+    jwt.verify(token, process.env.SECRET, function(err, decode) { //.verify is method from jwt
+    // if we get the decoded id it means the user is valid
+      user.findOne({"_id":decode, "token":token}, function (err, user) {
+        if (err) return cb(err);
+        cb (null, user);
+      })
     })
   }
 
