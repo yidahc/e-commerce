@@ -31,13 +31,30 @@ const { admin } = require('./middleware/admin')
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
+/*
+by sold: 
+/api/product/articles?sortBy=sold&order=desc&limit=10&skip=5
+above query would provide all the top 10 best selling articles, 
+in descending order, but skipping the first 5 
+(so really 5-10 of best selling articles)
+*/
+
+/*
+by arrival:
+/api/product/articles?sortBy=createdAt&order=desc&limit=4
+above query would provide top 4 newest arrivals
+*/
+
 app.get('/api/product/articles', (req, res)=>{
+// setting defaults to return first 100 articles by id in ascending order
   let order = req.query.order ? req.query.order : 'asc';
   let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
   let limit = req.query.limit ? parseInt(req.query.limit) : 100;
-
+// parseInt required since at momento of query the number is converted 
+// into a string, so we need to turn it back into a number for mongo to read it as a number
   Product.find().
   populate('brand').
+  // automatically populating brand and category with corresponding ObjectId
   populate('category').
   sort([[sortBy, order]]).
   limit(limit).
