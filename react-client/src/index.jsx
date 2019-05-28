@@ -6,6 +6,7 @@ import Home from './components/Home.jsx';
 import Payment from './components/Payment.jsx';
 import Products from './components/Products.jsx';
 import Cart from './components/Cart.jsx';
+import Layout from './components/Layouts/Layout.jsx';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class App extends React.Component {
@@ -14,26 +15,12 @@ class App extends React.Component {
     this.state = { 
       items: []
     }
-    this.postData = this.postData.bind(this)
   }
-/*
+
   componentDidMount() {
-    axios.get('/api/users/auth').then(response => {
+    axios.get('/api/product/brands').then(response => {
       console.log(response)
     })
-  }
-*/
-
-  postData (url= '', data= {}) {
-    return fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(() => this.componentDidMount())
-      .catch(err => console.error(err));
   }
 
  /*
@@ -54,15 +41,16 @@ class App extends React.Component {
   render () {
     return (      
     <BrowserRouter>
-      <div>
+      <Layout>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/Products' render={(props) => <Products {...props} postData={this.postData} />} />
           <Route exact path='/Payment' render={(props) => <Payment {...props} postData={this.postData} />} />
           <Route exact path='/Cart' component={Cart} />
         </Switch>
-      </div>
-    </BrowserRouter>)
+      </Layout>
+    </BrowserRouter>
+    )
   }
 }
 

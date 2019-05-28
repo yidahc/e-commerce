@@ -1,10 +1,7 @@
 import React from 'react';
 import { NavLink} from 'react-router-dom';
-import Login from './Login.jsx';
-import Logout from './Logout.jsx';
-import Register from './Register.jsx';
 import $ from 'jquery';
-
+// import MainCarousel from '../components/MainCarousel.jsx'
 
 class Home extends React.Component {
   constructor(props) {
@@ -29,8 +26,6 @@ class Home extends React.Component {
   render () {
     return (  
       <div>
-        <Login logged={this.logged}/>
-        <Register />
         <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
   <ol className="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
@@ -63,3 +58,4 @@ class Home extends React.Component {
   }
 }
 export default Home;
+
