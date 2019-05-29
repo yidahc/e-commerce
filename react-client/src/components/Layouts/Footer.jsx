@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 // import faCompass from '@fortawesome/fontawesome-free-solid/faCompass';
-// import faPhone from '@fortawesome/fontawesome-free-solid/faPhone';
+import { faFacebookSquare, faWhatsapp, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope';
 
@@ -29,6 +29,30 @@ const Footer = () => {
                                 <div className="nfo">
                                     <div>Email</div>
                                     <div>fashion4women@gmail.com</div>
+                                         
+                                </div>    
+                            </div>
+                            <div className="tag">
+                                <FontAwesomeIcon icon={faInstagram} className="icon" />
+                                <div className="nfo">
+                                    <div>Instagram</div>
+                                    <div>todoparaserunica</div>
+                                         
+                                </div>    
+                            </div>
+                            <div className="tag">
+                                <FontAwesomeIcon icon={faWhatsapp} className="icon" />
+                                <div className="nfo">
+                                    <div>Whatsapp</div>
+                                    <div>55-4046-8187</div>
+                                         
+                                </div>    
+                            </div>
+                            <div className="tag">
+                                <FontAwesomeIcon icon={faFacebookSquare} className="icon" />
+                                <div className="nfo">
+                                    <div>Facebook</div>
+                                    <div>facebook.com/fashion4women</div>
                                          
                                 </div>    
                             </div>

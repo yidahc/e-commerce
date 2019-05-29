@@ -1,6 +1,8 @@
 import React from 'react';
 import Login from '../Login.jsx';
 import Logout from '../Logout.jsx';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Register from '../Register.jsx';
 
 class Header extends React.Component {
@@ -10,11 +12,11 @@ class Header extends React.Component {
                 <div className="container">
                     <div  className="left">
                   <div className="dropdown">
-  <button className="dropbtn">Dropdown</button>
+  <button className="dropbtn"><FontAwesomeIcon icon={faBars} className="icon" /></button>
   <div className="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <a href="/">Volver a Inicio</a>
+    <a href="/Products">Productos</a>
+    <a href="/Cart">Carrito de Compras</a>
   </div>
 </div>
                         <div className="log">

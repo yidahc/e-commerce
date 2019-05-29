@@ -1,9 +1,8 @@
 import React from 'react';
 import Carousel, { Dots }  from '@brainhubeu/react-carousel';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faClock from '@fortawesome/fontawesome-free-solid/faClock';
+import { faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import '@brainhubeu/react-carousel/lib/style.css';
-
 let Image1 = './images/slide1.jpg';
 let Image2 = './images/slide2.jpg';
 let Image3 = './images/slide3.jpg';
@@ -35,8 +34,8 @@ class MainCarousel extends React.Component {
        (<img src={Image2} />),
        (<img src={Image3} />),
      ]}
-     arrowLeft={<FontAwesomeIcon icon={faClock} className="icon-example" name="arrow-left" />}
-     arrowRight={<FontAwesomeIcon icon={faClock} className="icon-example" name="arrow-right" />}
+     arrowLeft={<FontAwesomeIcon icon={faAngleDoubleLeft} className="icon-example" name="arrow-left" />}
+     arrowRight={<FontAwesomeIcon icon={faAngleDoubleRight} className="icon-example" name="arrow-right" />}
      addArrowClickHandler
      clickToChange
      centered
@@ -52,4 +51,3 @@ class MainCarousel extends React.Component {
 
 export default MainCarousel;
 
-// slidesPerPage={2}
