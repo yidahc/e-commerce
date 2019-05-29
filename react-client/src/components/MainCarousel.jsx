@@ -1,70 +1,55 @@
 import React from 'react';
-import Slider from 'react-slick';
+import Carousel, { Dots }  from '@brainhubeu/react-carousel';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faClock from '@fortawesome/fontawesome-free-solid/faClock';
+import '@brainhubeu/react-carousel/lib/style.css';
 
-import slide_one from '../../dist/images/slide1.jpg';
-import slide_two from './dist/images/slide2.jpg';
-import slide_three from './dist/images/slide3';
-import slide_four from './dist/images/slide4';
+let Image1 = './images/slide1.jpg';
+let Image2 = './images/slide2.jpg';
+let Image3 = './images/slide3.jpg';
+let Image4 = './images/slide4.jpg';
+let Image5 = './images/slide5.jpg';
+let Image6 = './images/slide6.jpg';
+let Image7 = './images/slide7.jpg';
+let Image8 = './images/slide8.jpg';
+let Image9 = './images/slide9.jpg';
 
-
-const MainCarousel = () => {
-
-    const settings = {
-        dots: true,
-        infinite:true,
-        autoplay: true,
-        speed: 500
+class MainCarousel extends React.Component {
+    constructor() {
+      super()
+      this.state = { value: 0 };
+      this.onChange = this.onChange.bind(this);
     }
-
-    return (
-        <div 
-            className="carrousel_wrapper"
-            style={{
-                height:`${window.innerHeight}px`,
-                overflow:'hidden'
-            }}
-        >
-            <Slider {...settings}>
-                <div>
-                   <div 
-                        className="carrousel_image"
-                        style={{
-                            background:`url(${slide_one})`,
-                            height:`${window.innerHeight}px`
-                        }}
-                   ></div>
-                </div>
-                <div>
-                    <div 
-                        className="carrousel_image"
-                        style={{
-                            background:`url(${slide_two})`,
-                            height:`${window.innerHeight}px`
-                        }}
-                   ></div>
-                </div>
-                <div>
-                    <div 
-                        className="carrousel_image"
-                        style={{
-                            background:`url(${slide_three})`,
-                            height:`${window.innerHeight}px`
-                        }}
-                   ></div>
-                </div>
-                <div>
-                   <div 
-                        className="carrousel_image"
-                        style={{
-                            background:`url(${slide_four})`,
-                            height:`${window.innerHeight}px`
-                        }}
-                   ></div>
-                </div>
-            </Slider>
-            
-        </div>
+  
+    onChange(value) {
+      this.setState({ value });
+    }
+    render() {
+        return (
+  <div>
+    <Carousel 
+     value={this.state.value}
+     onChange={this.onChange}
+     slides={[
+       (<img src={Image1} />),
+       (<img src={Image2} />),
+       (<img src={Image3} />),
+     ]}
+     arrowLeft={<FontAwesomeIcon icon={faClock} className="icon-example" name="arrow-left" />}
+     arrowRight={<FontAwesomeIcon icon={faClock} className="icon-example" name="arrow-right" />}
+     addArrowClickHandler
+     clickToChange
+     centered
+     autoPlay={2000}
+     animationSpeed={1000}  
+     infinite
+    />
+    <Dots Dots value={this.state.value} onChange={this.onChange} number={3} />
+  </div>
     );
-};
+    }
+}
 
 export default MainCarousel;
+
+// slidesPerPage={2}

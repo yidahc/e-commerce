@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink} from 'react-router-dom';
 import $ from 'jquery';
-// import MainCarousel from '../components/MainCarousel.jsx'
+import MainCarousel from '../components/MainCarousel.jsx'
 
 class Home extends React.Component {
   constructor(props) {
@@ -26,7 +26,16 @@ class Home extends React.Component {
   render () {
     return (  
       <div>
-        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+     <MainCarousel />
+<NavLink to="/products"><button>Productos</button></NavLink>
+      </div>
+    );
+  }
+}
+export default Home;
+
+/*
+   <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
   <ol className="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -52,10 +61,4 @@ class Home extends React.Component {
     <span className="sr-only">Next</span>
   </a>
 </div>
-<NavLink to="/products"><button>Productos</button></NavLink>
-      </div>
-    );
-  }
-}
-export default Home;
-
+*/
