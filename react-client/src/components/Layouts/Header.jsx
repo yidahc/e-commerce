@@ -12,13 +12,13 @@ class Header extends React.Component {
                 <div className="container">
                     <div  className="left">
                   <div className="dropdown">
-  <button className="dropbtn"><FontAwesomeIcon icon={faBars} className="icon" /></button>
-  <div className="dropdown-content">
-    <a href="/">Volver a Inicio</a>
-    <a href="/Products">Productos</a>
-    <a href="/Cart">Carrito de Compras</a>
-  </div>
-</div>
+                    <button className="dropbtn"><FontAwesomeIcon icon={faBars} className="icon" /></button>
+                        <div className="dropdown-content">
+                            <a href="/">Volver a Inicio</a>
+                            <a href="/Products">Productos</a>
+                            <a href="/Cart">Carrito de Compras</a>
+                        </div>
+                  </div>
                         <div className="log">
                             Yidah 
                         </div>

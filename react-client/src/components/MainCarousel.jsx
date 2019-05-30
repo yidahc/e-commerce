@@ -18,8 +18,16 @@ class MainCarousel extends React.Component {
       super()
       this.state = { value: 0 };
       this.onChange = this.onChange.bind(this);
+      this.handleKeyPress = this.handleKeyPress.bind(this)
     }
   
+    handleKeyPress (event) {
+      if(event.keyCode == 39){
+        console.log("wut");
+        this.onChange()
+      }
+    }
+
     onChange(value) {
       this.setState({ value });
     }

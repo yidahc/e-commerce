@@ -8,6 +8,12 @@ import Products from './components/Products.jsx';
 import Cart from './components/Cart.jsx';
 import Layout from './components/Layouts/Layout.jsx';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import promiseMiddleware from 'redux-promise';
+import ReduxThunk from 'redux-thunk';
+
+import Reducer from './Reducers';
+
+const createMyStore = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 class App extends React.Component {
   constructor(props) {
@@ -39,17 +45,20 @@ class App extends React.Component {
   }
 */
   render () {
-    return (      
-    <BrowserRouter>
-      <Layout>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/Products' render={(props) => <Products {...props} postData={this.postData} />} />
-          <Route exact path='/Payment' render={(props) => <Payment {...props} postData={this.postData} />} />
-          <Route exact path='/Cart' component={Cart} />
-        </Switch>
-      </Layout>
-    </BrowserRouter>
+    return ( 
+    <Provider store={createMyStore(Reducer, 
+     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>     
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/Products' render={(props) => <Products {...props} postData={this.postData} />} />
+            <Route exact path='/Payment' render={(props) => <Payment {...props} postData={this.postData} />} />
+            <Route exact path='/Cart' component={Cart} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </Provider>
     )
   }
 }
