@@ -15,7 +15,7 @@ export const validate = (element, formdata=[]) => {
   return error
 }
 
-let deepObjectCopy = function(obj) {
+export const deepObjectCopy = function(obj) {
   var copy = {};
   for (let x in obj) {
     if (typeof obj[x] === 'object') {
