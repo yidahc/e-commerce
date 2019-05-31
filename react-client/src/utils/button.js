@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Rbutton = (props) => {
+const Ybutton = (props) => {
     const buttons = () =>{
         let template = '';
         switch(props.type){
@@ -27,4 +27,4 @@ const Rbutton = (props) => {
     );
 };
 
-export default Rbutton;
+export default Ybutton;

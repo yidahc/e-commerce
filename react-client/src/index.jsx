@@ -10,7 +10,8 @@ import Layout from './components/Layouts/Layout.jsx';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
-
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import Reducer from './Reducers';
 
 const createMyStore = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);

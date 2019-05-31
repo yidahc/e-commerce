@@ -7,7 +7,6 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      images: ['1', '2', '3', '4'],
       loggedIn: false
     }
     this.logged = this.logged.bind(this);

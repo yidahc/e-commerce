@@ -1,12 +1,49 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import FormField from '../utils/form.js'
+import { update, generateData, isFormValid } from '../utils/formlogic.js';
+import { loginUser } from '../actions/user_actions.js';
 
 class Login extends React.Component {
     constructor(props) {
       super(props);
       this.state={
-        email: '',
-        password: '',
-        showForm: false
+        formError: false,
+        formSuccess: '',
+        showForm: false,
+        formdata: {
+          email: {
+            element: 'input',
+            value: '',
+            config: {
+              name: 'email_input',
+              type: 'email',
+              placeholder: 'Dirección de email',
+            },
+            validation: {
+              required: true,
+              email: true,
+            },
+            valid: false,
+            touched: false,
+            validationMessage: '',
+          },
+          password: {
+            element: 'input',
+            value: '',
+            config: {
+              name: 'password_input',
+              type: 'password',
+              placeholder: 'Contraseña',
+            },
+            validation: {
+              required: true,
+            },
+            valid: false,
+            touched: false,
+            validationMessage: '',
+          },
+        }
       };
       this.handleInput = this.handleInput.bind(this);
       this.postData = this.postData.bind(this);
@@ -29,56 +66,54 @@ class Login extends React.Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      const { email, password } = this.state;
-      this.postData('./api/users/login', {
-        email: email,
-        password: password,
-    });
+      let dataToSubmit = generateData(this.state.formdata, 'login');
+      let formIsValid = isFormValid(this.state.formdata, 'login')
       
-      this.setState({
-        email: '',
-        password: '',
-      });
+      if (formIsValid) {
+        console.log(dataToSubmit)
+      } else {
+        this.setState ({
+          formError: true
+        })        
+      }
     };
 
-    handleInput(event) {
-      const {target} = event;
-      const {name, value} = target;
-    
-      this.setState({
-        [name]:value
-      }); // name and value are in target
+    handleInput(element) {
+     const newFormData = update(element, this.state.formdata, 'login');
+     this.setState({
+       formError: false,
+       formdata: newFormData
+     })
     }
 
    
     render () {
-      const { email, password } = this.state;
         return (
           <span>      
           <button className="open-button" onClick={this.openForm}>Iniciar Sesion</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
-          <form action="/action_page.php" className="form-container">
+          <form onSubmit={(e)=>this.handleSubmit(e)} action="/action_page.php" className="form-container">
           <h1>Login</h1>
             <label><b>Email</b></label>
-              <input 
-                type="text" 
-                placeholder="Enter Email" 
-                name="email" 
-                value={email} 
-                onChange={this.handleInput}
-                required
-              />
-            <label><b>Password</b></label>
-              <input 
-                type="password" 
-                placeholder="Enter Password" 
-                name="password" 
-                value={password} 
-                onChange={this.handleInput}
-                required
-              />
-            <button type="submit" className="btn" onClick={this.handleSubmit}>Login</button>
-          <button type="button" className="btn cancel" onClick={this.openForm}>Close</button>
+              <FormField
+                id={'email'}
+                formdata={this.state.formdata.email}
+                change={(element)=> this.handleInput(element)}
+                />
+            <label><b>Contraseña</b></label>
+            <FormField
+                id={'password'}
+                formdata={this.state.formdata.password}
+                change={(element)=> this.handleInput(element)}
+                />
+                {this.state.formError ? 
+                  <div className= "error">
+                    Correo electrónico o contraseña inválidos.
+                  </div>
+                  : null
+                }
+            <button type="submit" className="btn" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
+          <button type="button" className="btn cancel" onClick={this.openForm}>Cerrar</button>
         </form>
         </div>
         </span>
@@ -86,4 +121,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default connect()(Login);
