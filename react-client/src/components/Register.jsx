@@ -1,4 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import FormField from '../utils/form.js';
+import { update, generateData, isFormValid } from '../utils/formlogic.js';
+import { loginUser } from '../actions/user_actions.js';
+import { withRouter } from 'react-router-dom';
+
 
 class Register extends React.Component {
     constructor(props) {
@@ -109,4 +115,4 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+export default connect()(withRouter(Register));

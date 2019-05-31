@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import FormField from '../utils/form.js'
+import FormField from '../utils/form.js';
 import { update, generateData, isFormValid } from '../utils/formlogic.js';
 import { loginUser } from '../actions/user_actions.js';
+import { withRouter } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props) {
@@ -129,4 +130,4 @@ class Login extends React.Component {
     }
 }
 
-export default connect()(Login);
+export default connect()(withRouter(Login));
