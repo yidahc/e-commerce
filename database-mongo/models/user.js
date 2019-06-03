@@ -46,13 +46,17 @@ const userSchema = mongoose.Schema({
       type: String 
     }
   });
-  
+ 
+  // .pre is the funciton that will run before any other function, whenever someone is trying to access this schema
+  // in this case is only doing something whenever they are trying to modify the password
+  // else, it runs the next function
   userSchema.pre('save', function(next){ 
     // next is function in server/config that will run after this function (cb)
     var user = this; 
     //es5 requires us to bind 'this' to the instance of User that we are running this callback on
     if(user.isModified('password')){ 
-      //isModified is a mongo method for when a user is trying to modify something
+      // isModified is a mongo method for when a user is trying to modify something
+      // if user doesn't exist then by creating a new user we are modifying it
       bcrypt.genSalt(SALT_I, function(err, salt){ // generating hash for user password
         if (err) return next(err); // if error, continue to next function with err as parameter
         bcrypt.hash(user.password, salt, function(err, hash){ 
@@ -67,27 +71,35 @@ const userSchema = mongoose.Schema({
     }
   });
 
+    // this method is being used in server/config to compare the password for each login
   userSchema.methods.comparePassword = function (candidatePassword, cb){
     //creating a new mongo method to compare user passwords
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch){ // bcrypt method to compare passwords
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch){ 
+      // bcrypt method to compare passwords
       if (err) return cb(err);
       cb(null, isMatch)
       // isMatch returns a boolean
     })
   }
 
+  // this method is being used in server/config to generate a token for each login
   userSchema.methods.generateToken = function (cb) {
     var user = this;
     var token = jwt.sign(user._id.toHexString(), process.env.SECRET)
    // .sign (to create token/hash of something) and .toHexString (to make something into string) are jwt methods
-    user.token = token;
-    // saving response from jwt to database
+   // generating token based on user id and password 
+   user.token = token;
+    // setting generated token to the user
     user.save(function(err, user){
-      if(err) return cb(err);
+    // saving response from jwt to database
+    if(err) return cb(err);
       cb(null, user);
     })
   }
 
+  // this method is being used in auth middleware to determine whether or not a user is authorized to a certain section 
+  // static methods are not called on instances of the model (in this case, each user), 
+  // they are called on the model itself (User)
   userSchema.statics.findByToken = function(token, cb) {
     var user = this;
     jwt.verify(token, process.env.SECRET, function(err, decode) { //.verify is method from jwt

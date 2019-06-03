@@ -52,10 +52,10 @@ class App extends React.Component {
       <BrowserRouter>
         <Layout>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/Products' render={(props) => <Products {...props} postData={this.postData} />} />
-            <Route exact path='/Payment' render={(props) => <Payment {...props} postData={this.postData} />} />
-            <Route exact path='/Cart' component={Cart} />
+            <Route path='/' exact component={Home} />
+            <Route path='/Products' exact component={Products} />
+            <Route path='/Payment' exact component={Payment} />
+            <Route path='/Cart' exact component={Cart} />
           </Switch>
         </Layout>
       </BrowserRouter>

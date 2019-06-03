@@ -10,7 +10,7 @@ class Login extends React.Component {
       super(props);
       this.state={
         formError: false,
-        formSuccess: '',
+        formSuccess: false,
         showForm: false,
         formdata: {
           email: {
@@ -121,8 +121,8 @@ class Login extends React.Component {
                   </div>
                   : null
                 }
-            <button type="submit" className="btn" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
-          <button type="button" className="btn cancel" onClick={this.openForm}>Cerrar</button>
+            <button type="submit" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
+          <button type="button" onClick={this.openForm}>Cerrar</button>
         </form>
         </div>
         </span>

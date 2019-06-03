@@ -1,12 +1,14 @@
-import { LOGIN_USER } from '../actions/types.js';
-
 import { deepObjectCopy } from '../utils/formlogic.js'
 
+
 export default function(state={}, action){
+    const newState = deepObjectCopy(state);
     switch(action.type){
-        case LOGIN_USER:
-            let newState = deepObjectCopy(state);
+        case 'register_user':
+            return { newState, register: action.payload }
+        case 'login_user':
             return { newState, loginSuccess: action.payload }
+    
         default:
             return state;
     }
