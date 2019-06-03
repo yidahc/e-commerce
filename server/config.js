@@ -132,6 +132,7 @@ app.post('/api/product/brand', auth, admin, (req, res) => {
 
 app.get('/api/product/brands', (req, res) =>{
   Brand.find({},(err, brands)=>{
+    // mongo premade method to find an instance of a schema
       if(err) return res.status(400).send(err);
       res.status(200).send(brands)
       
@@ -141,6 +142,7 @@ app.get('/api/product/brands', (req, res) =>{
 
 
 app.get('/api/users/auth', auth, (req, res) => {
+  // auth will find the user by token
   res.status(200).json({
     //user: req.user <-- all req 
     isAdmin: req.user.role === 0 ? false : true,
@@ -156,8 +158,10 @@ app.get('/api/users/auth', auth, (req, res) => {
 
 app.get('/api/users/logout', auth, (req, res) => {
   User.findOneAndUpdate(
+    // mongo method
     {_id: req.user._id},
     {token: ''},
+    // gets rid of the token after log out for security purposes
     (err,doc )=>{
         if(err) return res.json({success: false, err});
         return res.status(200).send({
@@ -199,6 +203,7 @@ app.post('/api/users/login', (req, res) => {
     // compare Password is a mongo method created in the User model
       if (!isMatch) return res.json({loginSuccess:false, message:'Wrong password'});
       user.generateToken((err, user) => {
+        // generateToken is a method I made on user modal
         if (err) return res.status(400).send(err);
         res.cookie('y_auth', user.token).status(200).json({ 
         // storing token as a cookie (not local storage)

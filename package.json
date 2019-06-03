@@ -17,12 +17,19 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "@brainhubeu/react-carousel": "^1.10.17",
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/free-brands-svg-icons": "^5.8.2",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/react-fontawesome": "0.0.20",
     "axios": "^0.18.0",
-    "bulma": "0.7.4",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.17.2",
+    "bulma": "0.7.4",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
+    "css-loader": "^2.1.1",
     "dotenv": "^8.0.0",
     "express": "^4.15.0",
     "jquery": "^3.1.1",
@@ -31,8 +38,16 @@
     "mysql": "^2.13.0",
     "react": "^16.3",
     "react-dom": "^16.3",
+    "react-fa": "^5.0.0",
+    "react-image": "^2.1.1",
     "react-paypal-express-checkout": "^1.0.5",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^5.0.0",
-    "reactstrap": "^8.0.0"
+    "react-slick": "^0.24.0",
+    "reactstrap": "^8.0.0",
+    "redux": "^4.0.0",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0",
+    "style-loader": "^0.23.1"
   }
 }

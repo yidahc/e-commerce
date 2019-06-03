@@ -1,15 +1,97 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import FormField from '../utils/form.js';
+import { update, generateData, isFormValid } from '../utils/formlogic.js';
+import { withRouter } from 'react-router-dom';
+import { registerUser } from '../actions/user_actions.js';
 
 class Register extends React.Component {
     constructor(props) {
       super(props);
       this.state={
-        email: '',
-        password: '',
-        name: '',
-        lastname: '',
-        showForm: false
-      };
+        formError: false,
+        formSuccess: false,
+        showForm: false,
+        formdata:{
+            name: {
+                element: 'input',
+                value: '',
+                config:{
+                    name: 'name_input',
+                    type: 'text',
+                    placeholder: 'Nombre'
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage:''
+            },
+            lastname: {
+                element: 'input',
+                value: '',
+                config:{
+                    name: 'lastname_input',
+                    type: 'text',
+                    placeholder: 'Apellido'
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage:''
+            },
+            email: {
+                element: 'input',
+                value: '',
+                config:{
+                    name: 'email_input',
+                    type: 'email',
+                    placeholder: 'Dirección de email'
+                },
+                validation:{
+                    required: true,
+                    email: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage:''
+            },
+            password: {
+                element: 'input',
+                value: '',
+                config:{
+                    name: 'password_input',
+                    type: 'password',
+                    placeholder: 'Contraseña'
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage:''
+            },
+            confirmPassword: {
+                element: 'input',
+                value: '',
+                config:{
+                    name: 'confirm_password_input',
+                    type: 'password',
+                    placeholder: 'Confirmar contraseña'
+                },
+                validation:{
+                    required: true,
+                    confirm: 'password'
+                },
+                valid: false,
+                touched: false,
+                validationMessage:''
+            },
+        }
+    }
       this.handleInput = this.handleInput.bind(this);
       this.postData = this.postData.bind(this);
       this.openForm = this.openForm.bind(this);
@@ -17,13 +99,12 @@ class Register extends React.Component {
     }
     openForm() { this.setState ({ showForm: !this.state.showForm }) };
     
-    handleInput(event) {
-      const {target} = event;
-      const {name, value} = target;
-    
-      this.setState({
-        [name]:value
-      }); // name and value are in target
+    handleInput(element) {
+      const newFormdata = update(element, this.state.formdata, 'register');
+        this.setState({
+            formError: false,
+            formdata: newFormdata
+        })
     }
 
     postData (url= '', data= {}) {
@@ -40,68 +121,74 @@ class Register extends React.Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      const { email, password, name, lastname } = this.state;
-      this.postData('./api/users/register', {
-        email: email,
-        password: password,
-        name: name,
-        lastname: lastname,
-    });
-  
-      this.setState({
-        email: '',
-        password: '',
-        name: '',
-        lastname: '',
-      });
+      let dataToSubmit = generateData(this.state.formdata, 'register');
+      let formIsValid = isFormValid(this.state.formdata, 'register')
+      if (formIsValid) {
+        this.props.dispatch(registerUser(dataToSubmit)).then(response => {
+          if (response.payload.success) {
+            this.setState({
+              formError: false,
+              formSuccess: true
+            });            
+          this.props.history.push('/login')
+          } else {
+            this.setState ({
+              formError: true
+            })
+          }
+        })
+      } else {
+        this.setState ({
+          formError: true
+        })        
+      }
     };
 
     render () {
-      const { email, password, name, lastname } = this.state;
         return (
         <span>   
           <button className="open-button" onClick={this.openForm}>Crea Una Cuenta</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
-          <form action="/action_page.php" className="form-container">
-          <h1>Register</h1>
+          <form action="/action_page.php" className="form-container" onSubmit={(e)=>  this.handleSubmit(e)}>
+          <h1>Crear Una Cuenta</h1>
             <label><b>Nombre</b></label>
-              <input 
-                type="text" 
-                placeholder="Nombre" 
-                name="name" 
-                value={name} 
-                onChange={this.handleInput}
-                required
-              />
+            <FormField
+              id={'name'}
+              formdata={this.state.formdata.name}
+              change={(element)=> this.handleInput(element)}
+            />
             <label><b>Apellido</b></label>
-              <input 
-                type="text" 
-                placeholder="Apellido" 
-                name="lastname" 
-                value={lastname} 
-                onChange={this.handleInput}
-                required
-              />
+            <FormField
+              id={'lastname'}
+              formdata={this.state.formdata.lastname}
+              change={(element)=> this.handleInput(element)}
+            />
             <label><b>Email</b></label>
-              <input 
-                type="text" 
-                placeholder="Email" 
-                name="email" 
-                value={email} 
-                onChange={this.handleInput}
-                required
-              />
+            <FormField
+              id={'email'}
+              formdata={this.state.formdata.email}
+              change={(element)=> this.handleInput(element)}
+            />
             <label><b>Contraseña</b></label>
-              <input 
-                type="password" 
-                placeholder="Contraseña" 
-                name="password" 
-                value={password} 
-                onChange={this.handleInput}
-                required
-              />
-            <button type="submit" className="btn" onClick={this.handleSubmit}>Crear Cuenta</button>
-          <button type="button" className="btn cancel" onClick={this.openForm}>Cerrar</button>
+            <FormField
+              id={'password'}
+              formdata={this.state.formdata.password}
+              change={(element)=> this.handleInput(element)}
+            />
+             <label><b>Confirmar Contraseña</b></label>
+            <FormField
+              id={'confirmPassword'}
+              formdata={this.state.formdata.confirmPassword}
+              change={(element)=> this.handleInput(element)}
+            />
+             {this.state.formError ? 
+                  <div className= "error">
+                    Favor de revisar sus datos.
+                  </div>
+                  : null
+                }
+            <button type="submit" onClick={this.handleSubmit}>Crear Cuenta</button>
+          <button type="button" onClick={this.openForm}>Cerrar</button>
         </form>
         </div>
         </span>
@@ -109,4 +196,4 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+export default connect()(withRouter(Register));
