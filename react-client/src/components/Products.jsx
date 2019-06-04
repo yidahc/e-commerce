@@ -13,7 +13,7 @@ class Products extends React.Component {
   render () {
     return (  
       <div>I am the Products component
-        <NavLink to="/cart"><button>Bolsa de Compras</button></NavLink>
+        <NavLink to="/cart"><button>Carrito de Compras</button></NavLink>
       </div>
     )
   }

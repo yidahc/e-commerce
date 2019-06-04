@@ -37,7 +37,6 @@ class Header extends React.Component {
         ]
     }
     this.logoutHandler = this.logoutHandler.bind(this);
-    this.cartLink = this.cartLink.bind(this);
     this.defaultLink = this.defaultLink.bind(this);
     this.showLinks = this.showLinks.bind(this);
   }
@@ -50,89 +49,68 @@ class Header extends React.Component {
     })
   }
 
-    cartLink (item,i) {
-        const user = this.props.user.userData;
-
-        return (
-            <div className="cart_link" key={i}>
-                <span>{user.cart ? user.cart.length:0}</span>
-                <Link to={item.linkTo}>
-                    {item.name}
-                </Link>
-            </div>
-        )
-    }
 
     defaultLink (item,i) { return (
-        item.name === 'Log out' ?
-            <div
-                onClick={()=> this.logoutHandler()}
-            >
-                Cerrar Session
-            </div>
-
-        :
         <Link to={item.linkTo} key={i}>
             {item.name}
         </Link>
     )
     };
 
-    showLinks (type) {
+    showLinks () {
         let list = [];
 
         if(this.props.user.userData){
-            type.forEach((item)=>{
+            this.state.links.forEach((item)=>{
                 if(!this.props.user.userData.isAuth){
                     if(item.public === true){
                         list.push(item)
                     }
                 } else{
-                    if(item.name !== 'Log in'){
                         list.push(item)
                     }
-                }
             });
-        };
+        } else {
+            this.state.links.forEach((item)=>{
+                if(item.public === true){
+                    list.push(item)
+                }
+            })
+        }
 
         return list.map((item,i)=>{
-            if(item.name !== 'My Cart'){
                 return this.defaultLink(item,i)
-            } else {
-                return this.cartLink(item,i)
-            }
-            
         })
     };
 
     render() {
         return (
             <header className="bck_b_light">
-                <div className="container">
-                    <div  className="left">
                   <div className="dropdown">
                     <button className="dropbtn"><FontAwesomeIcon icon={faBars} className="icon" /></button>
                         <div className="dropdown-content">
                             {this.showLinks(this.state.links)} 
                         </div>
                   </div>
-                        <div className="log">
+                        <h1>
                             Yidah 
-                        </div>
-                    </div>  
-                {!this.props.user.userData ?
+                        </h1>
+             { !this.props.user.userData ?
                    <div>
                    <Login />
                    <Register /> 
                    </div>
                    :
-                      <div onClick={()=> this.logoutHandler()}>
-                Cerrar Session
-            </div>
-
-                } 
-                     
-                </div> 
+                 <div>
+                    <button  className="dropbtn"  onClick={()=> this.logoutHandler()}> Cerrar Session </button>
+                    <div className="open-button">
+                    <span>{this.props.user.userData.cart ? this.props.user.userData.cart.length:0}</span>
+                     <Link to='/Cart'>
+                    Carrito de Compras
+                    </Link>
+                    </div>
+                 </div>
+                }   
             </header>
         );
     }
