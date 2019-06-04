@@ -1,6 +1,5 @@
 import React from 'react';
 import Login from '../Login.jsx';
-import Logout from '../Logout.jsx';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Register from '../Register.jsx';
