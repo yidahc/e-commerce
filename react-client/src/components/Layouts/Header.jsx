@@ -84,31 +84,31 @@ class Header extends React.Component {
 
     render() {
         return (
-            <header className="bck_b_light">
-                  <div className="dropdown">
+            <header className='PageTitle'>
+                  <span className="dropdown headerSections">
                     <button className="dropbtn"><FontAwesomeIcon icon={faBars} className="icon" /></button>
-                        <div className="dropdown-content">
+                        <span className="dropdown-content">
                             {this.showLinks(this.state.links)} 
-                        </div>
-                  </div>
-                        <h1>
-                            Yidah 
-                        </h1>
+                        </span>
+                  </span>
+                 <span id='TitleName' className="headerSections">
+                 Yidah
+                 </span>
              { !this.props.user.userData ||!this.props.user.userData.isAuth ?
-                   <div>
+                   <span className="headerSections">
                    <Login />
                    <Register /> 
-                   </div>
+                   </span>
                    : 
-                 <div>
+                 <span className="headerSections">
                     <button  className="dropbtn"  onClick={()=> this.logoutHandler()}> Cerrar Session </button>
-                    <div className="open-button">
+                    <span className="open-button">
                     <span>{this.props.user.userData.cart ? this.props.user.userData.cart.length:0}</span>
-                     <Link to='/Cart'>
+                     <Link className="link" to='/Cart'>
                     Carrito de Compras
                     </Link>
-                    </div>
-                 </div>
+                    </span>
+                 </span>
                 }   
             </header>
         );
