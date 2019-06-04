@@ -77,7 +77,7 @@ class Login extends React.Component {
               formSuccess: true,
               showForm: !this.state.showForm,
             });            
-            this.props.history.push('/user/dashboard')
+            this.props.history.push('/userDashboard')
           } else {
             this.setState ({
               formError: true

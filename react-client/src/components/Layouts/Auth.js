@@ -22,12 +22,12 @@ export default function(ComposedClass,reload,adminRoute = null){
                     }
                 } else{
                     if(adminRoute && !user.isAdmin){
-                        this.props.history.push('/user/dashboard')
-                    } else{
+                        this.props.history.push('/UserDashboard')
+                   /* } else{
                         if(reload === false){
-                            this.props.history.push('/user/dashboard')
-                        }
-                    }
+                            this.props.history.push('/UserDashboard')
+                        }*/
+                    } 
                 }
                 this.setState({loading:false})
             })

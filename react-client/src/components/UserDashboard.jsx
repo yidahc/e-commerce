@@ -8,7 +8,7 @@ const UserDashboard = ({user}) => {
             <div>
                 
                 <div>
-                    <h1>Datos de Usuario</h1>
+                    <h2>Datos de Usuario</h2>
                     <div>
                         <span>{user.userData.name}</span>
                         <span>{user.userData.lastname}</span>
@@ -17,7 +17,7 @@ const UserDashboard = ({user}) => {
                     <Ybutton
                         type="default"
                         title="Editar datos de usuario"
-                        linkTo="/user/user_profile"
+                        linkTo="/UserProfile"
                     />
                 </div>
 

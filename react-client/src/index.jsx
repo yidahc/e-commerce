@@ -57,14 +57,11 @@ class App extends React.Component {
       <BrowserRouter>
         <Layout>
           <Switch>
-           <Route path="/user/dashboard" exact component={Auth(UserDashboard,true)}/>
-          
-           <Route path="/Register" exact component={Auth(Register,false)}/>
-           <Route path="/Login" exact component={Auth(Login,false)}/>
+           <Route path="/UserDashboard" exact component={Auth(UserDashboard,true)}/>
+           <Route path='/Cart' exact component={Auth(Cart, true)} />
           
             <Route path='/' exact component={Auth(Home, null)} />
             <Route path='/Products' exact component={Auth(Products, null)} />
-            <Route path='/Cart' exact component={Auth(Cart, true)} />
           </Switch>
         </Layout>
       </BrowserRouter>

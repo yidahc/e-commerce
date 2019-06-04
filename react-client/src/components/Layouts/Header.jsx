@@ -94,12 +94,12 @@ class Header extends React.Component {
                         <h1>
                             Yidah 
                         </h1>
-             { !this.props.user.userData ?
+             { !this.props.user.userData ||!this.props.user.userData.isAuth ?
                    <div>
                    <Login />
                    <Register /> 
                    </div>
-                   :
+                   : 
                  <div>
                     <button  className="dropbtn"  onClick={()=> this.logoutHandler()}> Cerrar Session </button>
                     <div className="open-button">
