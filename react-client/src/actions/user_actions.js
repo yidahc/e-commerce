@@ -19,3 +19,28 @@ export function loginUser (dataToSubmit) {
     payload: request
   }
 }
+
+export function auth(){
+
+  const request = axios.get('/api/users/auth')
+  .then(response => response.data);
+
+  return {
+      type: 'auth_user',
+      payload: request
+  }
+
+}
+
+
+export function logoutUser(){
+
+  const request = axios.get('/api/users/logout')
+  .then(response => response.data);
+
+  return {
+      type: 'logout_user',
+      payload: request
+  }
+
+}

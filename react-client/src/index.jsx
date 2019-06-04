@@ -3,16 +3,21 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
 import Home from './components/Home.jsx';
-import Payment from './components/Payment.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 import Products from './components/Products.jsx';
 import Cart from './components/Cart.jsx';
 import Layout from './components/Layouts/Layout.jsx';
+import Auth from './components/Layouts/Auth.js';
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import Reducer from './Reducers';
+import UserDashboard from './components/UserDashboard.jsx';
+
 
 const createMyStore = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
@@ -52,10 +57,11 @@ class App extends React.Component {
       <BrowserRouter>
         <Layout>
           <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/Products' exact component={Products} />
-            <Route path='/Payment' exact component={Payment} />
-            <Route path='/Cart' exact component={Cart} />
+           <Route path="/UserDashboard" exact component={Auth(UserDashboard,true)}/>
+           <Route path='/Cart' exact component={Auth(Cart, true)} />
+          
+            <Route path='/' exact component={Auth(Home, null)} />
+            <Route path='/Products' exact component={Auth(Products, null)} />
           </Switch>
         </Layout>
       </BrowserRouter>

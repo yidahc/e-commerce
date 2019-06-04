@@ -97,6 +97,8 @@ class Register extends React.Component {
       this.openForm = this.openForm.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+
     openForm() { this.setState ({ showForm: !this.state.showForm }) };
     
     handleInput(element) {
@@ -128,7 +130,8 @@ class Register extends React.Component {
           if (response.payload.success) {
             this.setState({
               formError: false,
-              formSuccess: true
+              formSuccess: true,
+              showForm: !showForm,
             });            
           this.props.history.push('/login')
           } else {

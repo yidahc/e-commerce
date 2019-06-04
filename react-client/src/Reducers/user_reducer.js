@@ -8,7 +8,10 @@ export default function(state={}, action){
             return { newState, register: action.payload }
         case 'login_user':
             return { newState, loginSuccess: action.payload }
-    
+        case 'auth_user':
+            return { newState, userData: action.payload }
+        case 'logout_user':
+            return { newState }
         default:
             return state;
     }
