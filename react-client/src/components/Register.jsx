@@ -128,7 +128,8 @@ class Register extends React.Component {
           if (response.payload.success) {
             this.setState({
               formError: false,
-              formSuccess: true
+              formSuccess: true,
+              showForm: !showForm,
             });            
           this.props.history.push('/login')
           } else {

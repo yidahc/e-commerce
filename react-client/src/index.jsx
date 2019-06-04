@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
 import Home from './components/Home.jsx';
-import Payment from './components/Payment.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 import Products from './components/Products.jsx';
 import Cart from './components/Cart.jsx';
 import Layout from './components/Layouts/Layout.jsx';
+import Auth from './components/Layouts/Auth.js';
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
@@ -55,11 +58,13 @@ class App extends React.Component {
         <Layout>
           <Switch>
            <Route path="/user/dashboard" exact component={Auth(UserDashboard,true)}/>
-
+          
+           <Route path="/Register" exact component={Auth(Register,false)}/>
+           <Route path="/Login" exact component={Auth(Login,false)}/>
+          
             <Route path='/' exact component={Auth(Home, null)} />
             <Route path='/Products' exact component={Auth(Products, null)} />
-            <Route path='/Payment' exact component={Payment} />
-            <Route path='/Cart' exact component={Cart} />
+            <Route path='/Cart' exact component={Auth(Cart, true)} />
           </Switch>
         </Layout>
       </BrowserRouter>
