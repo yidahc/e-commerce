@@ -13,6 +13,8 @@ import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import Reducer from './Reducers';
+import UserDashboard from './components/UserDashboard.jsx';
+
 
 const createMyStore = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
@@ -52,8 +54,10 @@ class App extends React.Component {
       <BrowserRouter>
         <Layout>
           <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/Products' exact component={Products} />
+           <Route path="/user/dashboard" exact component={Auth(UserDashboard,true)}/>
+
+            <Route path='/' exact component={Auth(Home, null)} />
+            <Route path='/Products' exact component={Auth(Products, null)} />
             <Route path='/Payment' exact component={Payment} />
             <Route path='/Cart' exact component={Cart} />
           </Switch>
