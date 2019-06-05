@@ -12,6 +12,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        linkClicked: false,
         links:[
             {
                 name:'Volver a Inicio',
@@ -38,6 +39,10 @@ class Header extends React.Component {
     this.logoutHandler = this.logoutHandler.bind(this);
     this.defaultLink = this.defaultLink.bind(this);
     this.showLinks = this.showLinks.bind(this);
+  }
+  
+  handleClick () {
+    this.setState ({ linkClicked: !this.state.linkClicked })
   }
 
   logoutHandler () {
@@ -124,3 +129,8 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps)(withRouter(Header));
+
+
+//kualneskayotl:
+// ki’ichpanil
+// Guendasicarú
