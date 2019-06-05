@@ -163,7 +163,10 @@ app.get('/api/users/logout', auth, (req, res) => {
     {token: ''},
     // gets rid of the token after log out for security purposes
     (err,doc )=>{
-        if(err) return res.json({success: false, err});
+        if(err) {
+          console.log(err)
+          return res.json({success: false, err});
+        }
         return res.status(200).send({
             success: true
         })

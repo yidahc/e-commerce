@@ -42,9 +42,10 @@ class Header extends React.Component {
 
   logoutHandler () {
     this.props.dispatch(logoutUser()).then(response =>{
-        if(response.payload.success){
             this.props.history.push('/')
         }
+    ) .catch (err => {
+        this.props.history.push('/')
     })
   }
 
@@ -92,7 +93,7 @@ class Header extends React.Component {
                         </span>
                   </span>
                  <span id='TitleName' className="headerSections">
-                 Yidah
+                <a href="/"> Yunoi</a>
                  </span>
              { !this.props.user.userData ||!this.props.user.userData.isAuth ?
                    <span className="headerSections">

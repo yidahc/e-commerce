@@ -105,8 +105,8 @@ class Login extends React.Component {
           <span>      
           <button className="open-button" onClick={this.openForm}>Iniciar Sesion</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
-          <form onSubmit={(e)=>this.handleSubmit(e)} action="/action_page.php" className="form-container">
-          <h1>Login</h1>
+          <form onSubmit={(e)=>this.handleSubmit(e)} className="form-container">
+          <h1 >Ingresar</h1>
             <label><b>Email</b></label>
               <FormField
                 id={'email'}
@@ -125,8 +125,8 @@ class Login extends React.Component {
                   </div>
                   : null
                 }
-            <button type="submit" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
-          <button type="button" onClick={this.openForm}>Cerrar</button>
+            <button className="fancyButton" type="submit" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
+          <button className="fancyButton" type="button" onClick={this.openForm}>Cerrar</button>
         </form>
         </div>
         </span>

@@ -152,8 +152,8 @@ class Register extends React.Component {
         <span>   
           <button className="open-button" onClick={this.openForm}>Crea Una Cuenta</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
-          <form action="/action_page.php" className="form-container" onSubmit={(e)=>  this.handleSubmit(e)}>
-          <h1>Crear Una Cuenta</h1>
+          <form className="form-container" onSubmit={(e)=>  this.handleSubmit(e)}>
+          <h1 >Crear Una Cuenta</h1>
             <label><b>Nombre</b></label>
             <FormField
               id={'name'}
@@ -190,8 +190,8 @@ class Register extends React.Component {
                   </div>
                   : null
                 }
-            <button type="submit" onClick={this.handleSubmit}>Crear Cuenta</button>
-          <button type="button" onClick={this.openForm}>Cerrar</button>
+            <button className="fancyButton"  type="submit" onClick={this.handleSubmit}>Crear Cuenta</button>
+          <button  className="fancyButton"  type="button" onClick={this.openForm}>Cerrar</button>
         </form>
         </div>
         </span>
