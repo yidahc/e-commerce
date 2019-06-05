@@ -1,5 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import LoadmoreCards from  '../utils/loadmorecards.js';
+import PageTop from  '../utils/pagetop.js';
+import CollapseRadio from  '../utils/collapseRadio.js';
+import CollapseCheckbox from  '../utils/collapseCheckbox.js';
 
 
 import { getProductsToShop ,getBrands, getCategories } from '../actions/product_actions.js'
