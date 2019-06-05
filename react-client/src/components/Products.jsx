@@ -1,6 +1,4 @@
 import React from 'react';
-import { NavLink} from 'react-router-dom';
-
 import ProductCards from '../utils/ProductCards.jsx';
 
 class Products extends React.Component {
@@ -29,9 +27,9 @@ class Products extends React.Component {
 
   render () {
     return (  
-      <div>I am the Products component
+      <span>
         <ProductCards list={this.state.data}/>
-      </div>
+      </span>
     )
   }
 }

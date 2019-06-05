@@ -17,10 +17,12 @@ const FormField = ({formdata, change, id}) => {
         switch(formdata.element){
             case ("input"):
                 formTemplate = (
-                  <div>
+                  <div >
                     <input
                       {...formdata.config}
                       value={formdata.value}
+                      title={formdata.placeholder}
+                      aria-labelledby={formdata.placeholder}
                       onBlur={(event)=> change({event, id, blur:true})}
                       // onBlur means the user has visited that input but not entered a valid input
                       // it is linked to "touched" for the corresponding state
