@@ -106,7 +106,7 @@ class Login extends React.Component {
           <button className="dropbtn" onClick={this.openForm}>Iniciar Sesion</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'block' : 'none' }}>
           <form onSubmit={(e)=>this.handleSubmit(e)} className="form-container">
-          <h1 >Ingresar</h1>
+          <h1 >Iniciar Sesion</h1>
             <label><b>Email</b></label>
               <FormField
                 id={'email'}

@@ -68,10 +68,10 @@ font-family: 'Baumans', cursive;
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 23.6%;
+  left: 0;
+  border: none;
   z-index: 9;
   font-family: 'Baumans', cursive;
 }
