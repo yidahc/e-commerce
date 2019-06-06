@@ -32,6 +32,10 @@ const { admin } = require('./middleware/admin')
 // app.use(express.static(__dirname + '/../node_modules'));
 
 
+/*
+see bottom for response example for following post request
+*/
+
 app.post('/api/product/shop',(req,res)=>{
 
   let order = req.body.order ? req.body.order : "desc";
@@ -131,7 +135,7 @@ app.get('/api/product/articles_by_id', (req, res)=>{
   })
 });
 
-app.post('/api/product/article', auth, (req, res) => {
+app.post('/api/product/article', (req, res) => {
   const product = new Product(req.body);
   product.save((err, doc) => {
       if (err) return res.json({success: false, err});
@@ -143,7 +147,7 @@ app.post('/api/product/article', auth, (req, res) => {
   })
 })
 
-app.post('/api/product/category', auth, admin, (req, res)=>{
+app.post('/api/product/category', (req, res)=>{
   const category = new Category(req.body);
   category.save((err, doc)=>{
       if( err ) return res.json({success:false, err});
@@ -154,6 +158,10 @@ app.post('/api/product/category', auth, admin, (req, res)=>{
   })
 });
 
+// labiales -> 5cf836a9c380506ed07762b3
+// brochas -> 5cf836cfc380506ed07762b4
+// rubores -> 5cf836dec380506ed07762b5
+
 app.get('/api/product/categories', (req, res)=>{
   Category.find({}, (err, category)=>{
       if(err) return res.status(400).send(err);
@@ -161,7 +169,7 @@ app.get('/api/product/categories', (req, res)=>{
   })
 });
 
-app.post('/api/product/brand', auth, admin, (req, res) => {
+app.post('/api/product/brand', (req, res) => {
   const brand = new Brand(req.body);
   brand.save((err, doc) => {
     if (err) return res.json ({success:false, err});
@@ -171,6 +179,9 @@ app.post('/api/product/brand', auth, admin, (req, res) => {
     })
   })
 });
+
+// sigma -> 5cf8358bc380506ed07762b1
+// DOC -> 5cf835b8c380506ed07762b2
 
 app.get('/api/product/brands', (req, res) =>{
   Brand.find({},(err, brands)=>{
@@ -216,15 +227,6 @@ app.get('/api/users/logout', auth, (req, res) => {
   )
 });
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../react-client/dist/index.html'), function(err) {
-    if (err) { // renders the corresponding path on the html so the path can render the 
-      res.status(500).send(err) // proper component without having to refresh
-    }
-  })
-}); 
-// react-router fallback so we can reload without visiting root
-// must be bellow all other get requests, because it catches all get requests that start with "/"
 
 app.post('/api/users/register', (req, res) => {
   const user = new User(req.body) // returns a new user with parameters from database
@@ -394,5 +396,75 @@ app.post('/api/users/successBuy',auth,(req,res)=>{
   )
 })
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../react-client/dist/index.html'), function(err) {
+    if (err) { // renders the corresponding path on the html so the path can render the 
+      res.status(500).send(err) // proper component without having to refresh
+    }
+  })
+}); 
+// react-router fallback so we can reload without visiting root
+// must be bellow all other get requests, because it catches all get requests that start with "/"
+
+
 
 module.exports = app;
+
+
+/*
+response from app.post('/api/product/shop',
+
+{
+    "size": 2,
+    "articles": [
+        {
+            "_id": "5cf83a304069f9702aa58b5a",
+            "updatedAt": "2019-06-05T21:54:56.603Z",
+            "createdAt": "2019-06-05T21:54:56.603Z",
+            "name": "Dose Of Colors Labial Liquido Mate Tono Fresa",
+            "description": "Matte Liquid Lipsticks de Dose Of Colors. Un lipstick que brinda una increíble textura mate aterciopelada.Se aplica en forma líquida y al secar crea labios súper besables que atraparán todas las miradas. Tono Fresa",
+            "price": 350,
+            "brand": {
+                "_id": "5cf835b8c380506ed07762b2",
+                "name": "Dose Of Colors",
+                "__v": 0
+            },
+            "available": true,
+            "category": {
+                "_id": "5cf836a9c380506ed07762b3",
+                "name": "labiales",
+                "__v": 0
+            },
+            "publish": true,
+            "__v": 0,
+            "images": [],
+            "sold": 0,
+            "shipping": true
+        },
+        {
+            "_id": "5cf839134069f9702aa58b59",
+            "updatedAt": "2019-06-05T21:50:11.899Z",
+            "createdAt": "2019-06-05T21:50:11.899Z",
+            "name": "Brocha Sigma F64 Soft Blend Concealer",
+            "description": "Para pulir y aplicar corrector ligero en áreas amplias o para aplicar un acabado completo en el rostro (18.89 cm).",
+            "price": 320,
+            "brand": {
+                "_id": "5cf8358bc380506ed07762b1",
+                "name": "Sigma Beauty",
+                "__v": 0
+            },
+            "available": true,
+            "category": {
+                "_id": "5cf836cfc380506ed07762b4",
+                "name": "brochas",
+                "__v": 0
+            },
+            "publish": true,
+            "__v": 0,
+            "images": [],
+            "sold": 0,
+            "shipping": true
+        }
+    ]
+}
+*/

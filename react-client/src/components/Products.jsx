@@ -7,7 +7,7 @@ import CollapseRadio from  '../utils/collapseRadio.js';
 import CollapseCheckbox from  '../utils/collapseCheckbox.js';
 
 
-import { getProductsToShop ,getBrands, getCategories } from '../actions/product_actions.js'
+import { getProductsToShop, getBrands, getCategories } from '../actions/product_actions.js'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 import faTh from '@fortawesome/fontawesome-free-solid/faTh';
@@ -147,24 +147,7 @@ handleGrid () {
       <div className="container">
           <div className="shop_wrapper">
               <div className="left">
-                  <CollapseCheckbox
-                      initState={true}
-                      title="Marcas"
-                      list={this.props.products.brands}
-                      handleFilters={(filters)=> this.handleFilters(filters,'brand')}
-                  />
-                  <CollapseCheckbox
-                      initState={false}
-                      title="Categorias"
-                      list={this.props.products.categories}
-                      handleFilters={(filters)=> this.handleFilters(filters,'category')}
-                  />
-                   <CollapseRadio
-                      initState={true}
-                      title="Precio"
-                      list={price}
-                      handleFilters={(filters)=> this.handleFilters(filters,'price')}
-                  />
+                
                  
               </div>
               <div className="right">
@@ -185,13 +168,8 @@ handleGrid () {
                       </div>
                   </div>
                   <div style={{clear:'both'}}>
-                      <LoadmoreCards
-                          grid={this.state.grid}
-                          limit={this.state.limit}
-                          size={this.props.products.toShopSize}
-                          products={this.props.products.toShop}
-                          loadMore={()=> this.loadMoreCards()}
-                      />
+                     
+
                   </div>
               </div>
           </div>
@@ -208,3 +186,35 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Products);
+
+
+/*
+  <CollapseCheckbox
+                      initState={true}
+                      title="Marcas"
+                      list={this.props.products.brands}
+                      handleFilters={(filters)=> this.handleFilters(filters,'brand')}
+                  />
+                  <CollapseCheckbox
+                      initState={false}
+                      title="Categorias"
+                      list={this.props.products.categories}
+                      handleFilters={(filters)=> this.handleFilters(filters,'category')}
+                  />
+                   <CollapseRadio
+                      initState={true}
+                      title="Precio"
+                      list={price}
+                      handleFilters={(filters)=> this.handleFilters(filters,'price')}
+                  />
+*/
+
+/*
+ <LoadmoreCards
+                          grid={this.state.grid}
+                          limit={this.state.limit}
+                          size={this.props.products.toShopSize}
+                          products={this.props.products.toShop}
+                          loadMore={()=> this.loadMoreCards()}
+                      />
+*/

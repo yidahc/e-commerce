@@ -55,6 +55,10 @@ font-family: 'Baumans', cursive;
   display:table;
 } 
 
+.headerSectionsLogin{
+  
+}
+
 .headerSections {
   white-space: nowrap;
   display: table-cell;
@@ -65,8 +69,8 @@ font-family: 'Baumans', cursive;
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
-  /* position: fixed; */
-  bottom: 0;
+  margin-top: 7%;
+  top: 0;
   right: 15px;
   z-index: 9;
   font-family: 'Baumans', cursive;
@@ -101,18 +105,12 @@ h1 {
   font-family: 'Megrim', cursive; 
 }
 
-.carousel-img-width {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-
-  top: 100%
+.page_top {
+    border-bottom: 1px solid #999592;   
+    padding: 20px 0px;
+    text-transform: uppercase;
 }
 
-.carousel {
-width:500px;
-height:500px
-}
 
 
 .dropbtn {

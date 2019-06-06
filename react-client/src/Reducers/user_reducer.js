@@ -12,6 +12,34 @@ export default function(state={}, action){
             return { newState, userData: action.payload }
         case 'logout_user':
             return { newState }
+            /*
+        case 'add_to_cart':
+            return { newState, userData:{
+                newState.userData,
+                cart: action.payload
+            }}
+        case 'get_cart_items':
+            return { newState,cartDetail: action.payload  }
+        case 'remove_cart_item':
+            return { 
+                newState,
+                cartDetail: action.payload.cartDetail,
+                userData:{
+                    newState.userData,
+                    cart: action.payload.cart
+                }
+             }
+        case 'on_success_buy':
+             return {
+                newState,
+                successBuy: action.payload.success,
+                userData:{
+                    newState.userData,
+                    cart: action.payload.cart
+                },
+                cartDetail: action.payload.cartDetail
+             }
+             */
         default:
             return state;
     }

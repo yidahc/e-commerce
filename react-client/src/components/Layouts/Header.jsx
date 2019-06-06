@@ -88,8 +88,11 @@ class Header extends React.Component {
         })
     };
 
+
+    
     render() {
         return (
+            <div>
             <header className='PageTitle'>
                   <span className="dropdown headerSections">
                     <button className="dropbtn"><FontAwesomeIcon icon={faBars} className="icon" /></button>
@@ -98,25 +101,28 @@ class Header extends React.Component {
                         </span>
                   </span>
                  <span id='TitleName' className="headerSections">
-                <a href="/"> Yunoi</a>
+                <a href="/"> Narzisse</a>
                  </span>
-             { !this.props.user.userData ||!this.props.user.userData.isAuth ?
-                   <span className="headerSections">
-                   <Login />
-                   <Register /> 
-                   </span>
-                   : 
-                 <span className="headerSections">
-                    <button  className="dropbtn"  onClick={()=> this.logoutHandler()}> Cerrar Session </button>
-                    <span className="open-button">
-                    <span>{this.props.user.userData.cart ? this.props.user.userData.cart.length:0}</span>
-                     <Link className="link" to='/Cart'>
-                    Carrito de Compras
-                    </Link>
-                    </span>
-                 </span>
-                }   
             </header>
+                    <span>
+                         { !this.props.user.userData ||!this.props.user.userData.isAuth ?
+                            <span className="headerSectionsLogin" >
+                            <Login />
+                            <Register /> 
+                            </span>
+                            : 
+                          <span className="headerSections">
+                             <button  className="dropbtn"  onClick={()=> this.logoutHandler()}> Cerrar Session </button>
+                             <span className="open-button">
+                             <span>{this.props.user.userData.cart ? this.props.user.userData.cart.length:0}</span>
+                              <Link className="link" to='/Cart'>
+                             Carrito de Compras
+                             </Link>
+                             </span>
+                          </span>
+                         }   
+                         </span>
+                         </div>
         );
     }
 }
