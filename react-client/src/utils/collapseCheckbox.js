@@ -25,14 +25,7 @@ class CollapseCheckbox extends React.Component {
 }
 
 
-    componentDidMount() {
-        if(this.props.initState){
-            this.setState({
-                open: this.props.initState
-            })
-        }
-    }
-
+ 
     handleClick () {
         this.setState({open: !this.state.open})
     }
@@ -61,7 +54,7 @@ class CollapseCheckbox extends React.Component {
                     <ListItemSecondaryAction>
                         <Checkbox
                             color="primary"
-                            onChange={this.handleToggle(value._id)}
+                            onChange={this.handleToggle}
                             checked={this.state.checked.indexOf(value._id) !== -1}
                         />
                     </ListItemSecondaryAction>
