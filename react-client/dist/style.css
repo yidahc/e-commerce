@@ -1,15 +1,17 @@
 /*# = id, . = class, nothing = tag */
 
 .open-button {
-  background-color:  rgb(41, 37, 37);
+  background-color: #555;
   color: white;
+  padding: 16px 20px;
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  align-items: start;
-  right: 35px;
-  width: 150px;
-font-family: 'Baumans', cursive;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+  font-family: 'Baumans', cursive;
 }
 
 .open-button:hover {
@@ -55,9 +57,6 @@ font-family: 'Baumans', cursive;
   display:table;
 } 
 
-.headerSectionsLogin{
-  
-}
 
 .headerSections {
   white-space: nowrap;
@@ -69,9 +68,10 @@ font-family: 'Baumans', cursive;
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
-  margin-top: 7%;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   right: 15px;
+  border: 3px solid #f1f1f1;
   z-index: 9;
   font-family: 'Baumans', cursive;
 }
@@ -82,6 +82,7 @@ font-family: 'Baumans', cursive;
   padding: 10px;
   background-color:  rgb(41, 37, 37);
   font-family: 'Baumans', cursive;
+/*  position: fixed; */
 }
 
 body{
@@ -169,6 +170,7 @@ input:focus {
   color: black;
 }
 
+/*
 input:-webkit-autofill {
   -webkit-text-fill-color: white !important;
   -webkit-box-shadow: 0 0 0 30px rgb(31, 27, 27) inset !important;
@@ -178,7 +180,7 @@ input:-webkit-autofill:focus {
   -webkit-text-fill-color: black !important;
   -webkit-box-shadow: 0 0 0 30px rgb(61, 54, 54) inset !important;
 }
-
+*/
 
 footer .logo {
   text-align: center;
