@@ -14,7 +14,12 @@ const Footer = () => {
                 </div>
                 <div className="wrapper">
                     <div className="left">
-                        <h2>Informes</h2>
+                        <h2 className="titles">Informes</h2>
+                    </div> 
+                    <div className="left">
+                        <h2 className="titles subscribe">Suscríbete</h2>
+                    </div>      
+                </div>             
                         <div className="business_nfo">
                             <div className="tag">
                                 <FontAwesomeIcon icon={faClock} className="icon" />
@@ -58,18 +63,7 @@ const Footer = () => {
                             </div>
                         </div>    
                     </div>
-                    <div className="left">
-                        <h1>
-                        Síguenos
-                        </h1>
-                        <div>
-                            <div>
-                                Suscríbete al newsletter 
-                            </div>
-                        </div>
-                    </div>
-                </div>      
-            </div>
+                   
         </footer>
     );
 };

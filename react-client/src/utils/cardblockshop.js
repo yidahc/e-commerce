@@ -1,9 +1,12 @@
 import React from 'react';
 import Card from './card';
 
+
+
 const CardBlockShop = (props) => {
 
-    const renderCards = () => (
+    const renderCards = () => {     
+        return (
         props.list ? 
             props.list.map(card=>(
                 <Card
@@ -14,6 +17,7 @@ const CardBlockShop = (props) => {
             ))
         :null
     )
+  }
 
     return (
         <div className="card_block_shop">

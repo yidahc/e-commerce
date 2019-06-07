@@ -48,7 +48,7 @@ class MainCarousel extends React.Component {
      addArrowClickHandler
      clickToChange
      centered
-     autoPlay={2000}
+     autoPlay={2500}
      animationSpeed={1000}  
      infinite
      onKeyDown={(e) => this.handleKeyPress(e)}

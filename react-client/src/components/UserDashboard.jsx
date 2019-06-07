@@ -7,7 +7,7 @@ const UserDashboard = ({user}) => {
         <UserLayout>
             <div>
                 
-                <div>
+                <div className="user_nfo_panel">
                     <h2>Datos de Usuario</h2>
                     { user.userData ? (
                     <div>
@@ -25,10 +25,10 @@ const UserDashboard = ({user}) => {
                     />
                 </div>
 
-                <div>
+                <div className="user_nfo_panel">
                     <h1>Historial de Compras</h1>
-                    <div>
-                            history
+                    <div className="user_product_block_wrapper">
+                            Historial
                     </div>            
                 </div>
                 

@@ -4,13 +4,17 @@ import Ybutton from './button.js';
 import { connect } from 'react-redux';
 import { addToCart } from '../actions/user_actions.js';
 
+const cardImages = [
+    '/images/product1.jpg', '/images/product2.jpg', '/images/product3.jpg', '/images/product4.jpg'
+ ];
+
 class Card extends React.Component {
 
     renderCardImage(images){
         if(images.length > 0){
-            return images[0].url
+            return images[0]
         } else {
-            return '/images/slide1.jpg'
+            return '/images/product1.jpg'
         }
     }
 
@@ -22,9 +26,8 @@ class Card extends React.Component {
                 <div
                     className="image"
                     style={{
-                        background:`url(${this.renderCardImage(props.images)}) no-repeat`
-                    }}
-                >  </div>
+                        background:`url(${this.renderCardImage(cardImages)} no-repeat`}}>  
+                    </div>
                     <div className="action_container">
                         <div className="tags">
                             <div className="brand">{props.brand.name}</div>
@@ -45,7 +48,7 @@ class Card extends React.Component {
                             <Ybutton
                                 type="default"
                                 altClass="card_link"
-                                title="View product"
+                                title="Ver producto"
                                 linkTo={`/product_detail/${props._id}`}
                                 addStyles={{
                                     margin: '10px 0 0 0'
