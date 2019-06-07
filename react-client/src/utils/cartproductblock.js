@@ -6,7 +6,7 @@ const CartProductBlock = ({products,removeItem}) => {
         if(images.length > 0){
             return images[0].url
         } else {
-            return '/images/image_not_availble.png'
+            return '/images/slide1.jpg'
         }
     }
 
@@ -40,7 +40,7 @@ const CartProductBlock = ({products,removeItem}) => {
                         </div>
                     </div>
                     <div className="item btn">
-                       <div className="cart_remove_btn" 
+                       <div className="fancyButton" 
                             onClick={()=> removeItem(product._id)}>
                             Sacar de Carrito
                        </div>
