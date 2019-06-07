@@ -6,7 +6,7 @@ const CartProductBlock = ({products,removeItem}) => {
         if(images.length > 0){
             return images[0].url
         } else {
-            return '/images/slide1.jpg'
+            return '/images/product1.jpg'
         }
     }
 

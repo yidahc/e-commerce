@@ -8,13 +8,13 @@ const CardBlockShop = (props) => {
     const renderCards = () => {     
         return (
         props.list ? 
-            props.list.map(card=>(
+            props.list.map(card=> (           
                 <Card
                     key={card._id}
                     {...card}
                     grid={props.grid}
                 />
-            ))
+             ))
         :null
     )
   }

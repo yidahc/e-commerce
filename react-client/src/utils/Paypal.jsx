@@ -47,7 +47,7 @@ class Paypal extends React.Component {
               onCancel={onCancel} 
               style={{
                 size: 'large',
-                color: 'blue',
+                color: 'black',
                 shape: 'rect',
                 label: 'checkout'
               }}

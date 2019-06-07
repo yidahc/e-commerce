@@ -26,7 +26,7 @@ class Card extends React.Component {
                 <div
                     className="image"
                     style={{
-                        background:`url(${this.renderCardImage(cardImages)} no-repeat`}}>  
+                        background:`url(${this.renderCardImage(props.images)}) no-repeat`}}>
                     </div>
                     <div className="action_container">
                         <div className="tags">
