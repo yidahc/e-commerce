@@ -12,10 +12,10 @@ export default function(state={}, action){
             return { newState, userData: action.payload }
         case 'logout_user':
             return { newState }
-            /*
+            
         case 'add_to_cart':
             return { newState, userData:{
-                newState.userData,
+       //         newState.userData,
                 cart: action.payload
             }}
         case 'get_cart_items':
@@ -25,7 +25,7 @@ export default function(state={}, action){
                 newState,
                 cartDetail: action.payload.cartDetail,
                 userData:{
-                    newState.userData,
+           //         newState.userData,
                     cart: action.payload.cart
                 }
              }
@@ -34,12 +34,12 @@ export default function(state={}, action){
                 newState,
                 successBuy: action.payload.success,
                 userData:{
-                    newState.userData,
+        //            newState.userData,
                     cart: action.payload.cart
                 },
                 cartDetail: action.payload.cartDetail
              }
-             */
+             
         default:
             return state;
     }

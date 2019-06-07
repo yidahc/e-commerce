@@ -58,7 +58,7 @@ export function addToCart(_id){
 
 export function getCartItems(cartItems, userCart){
 
-  const request = axios.get(`/api/users/articles_by_id?id=${cartItems}&type=array`)
+  const request = axios.get(`/api/product/articles_by_id?id=${cartItems}&type=array`)
                   .then(response => {
    
                       userCart.forEach(item=>{
