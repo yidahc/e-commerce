@@ -15,7 +15,7 @@ export default function(state={}, action){
             
         case 'add_to_cart':
             return { newState, userData:{
-       //         newState.userData,
+                userData: newState.userData,
                 cart: action.payload
             }}
         case 'get_cart_items':

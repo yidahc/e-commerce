@@ -34,7 +34,7 @@ class MainCarousel extends React.Component {
     }
     render() {
         return (
-    <div>
+    <div  className="mainCarousel">
     <Carousel 
      value={this.state.value}
      onChange={this.onChange}

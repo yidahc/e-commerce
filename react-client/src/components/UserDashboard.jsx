@@ -4,7 +4,6 @@ import Ybutton from '../utils/button.js';
 
 const UserDashboard = ({user}) => {
     return (
-        <UserLayout>
             <div>
                 
                 <div className="user_nfo_panel">
@@ -32,9 +31,7 @@ const UserDashboard = ({user}) => {
                     </div>            
                 </div>
                 
-            </div>
-        </UserLayout>
-        
+            </div>        
     );
 };
 

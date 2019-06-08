@@ -1,7 +1,7 @@
 /*# = id, . = class, nothing = tag */
 
 .open-button {
-  background-color: #555;
+  background-color: black;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -16,6 +16,10 @@ font-family: 'Libre Baskerville', serif;
 
 .open-button:hover {
   color: #b46875;
+}
+
+.error {
+  color: red;
 }
 
 .bck_b_dark {
@@ -42,7 +46,7 @@ font-family: 'Libre Baskerville', serif;
 }
 
 .PageTitle{
-  background-color:  rgb(41, 37, 37);
+  background-color: black;
   color: white;
   padding-top: 20px;
   border: none;
@@ -53,8 +57,12 @@ font-family: 'Libre Baskerville', serif;
   display:table;
 } 
 
+.mainCarousel {
+  padding-top: 25px;
+}
 
 .headerSections {
+  margin-top: 20px;
   white-space: nowrap;
   display: table-cell;
 font-family: 'Libre Baskerville', serif;
@@ -65,14 +73,23 @@ font-family: 'Libre Baskerville', serif;
   display: table-cell;
   font-family: 'Libre Baskerville', serif;
   text-align: right;
+  background-color: black;
+  color: white;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: none;
+  height: 20px;
 }
 
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
   position: absolute;
-  top: 23.6%;
-  left: 0;
+  top: 14%;
+  right: 0;
   border: none;
   z-index: 9;
 font-family: 'Libre Baskerville', serif;
@@ -82,10 +99,14 @@ font-family: 'Libre Baskerville', serif;
 .form-container {
   max-width: 300px;
   padding: 10px;
-  background-color:  rgb(41, 37, 37);
+  background-color:  black;
 font-family: 'Libre Baskerville', serif;
 /*  position: fixed; */
 }
+
+.form-container:hover {
+  color: white;
+  }
 
 body{
 font-family: 'Libre Baskerville', serif;
@@ -102,7 +123,7 @@ font-family: 'Libre Baskerville', serif;
 }
 
 .link {
-  background-color: rgb(41, 37, 37);
+  background-color: black;
   color: white;
   padding: 3px;
   font-size: 16px;
@@ -116,12 +137,22 @@ font-family: 'Libre Baskerville', serif;
 
 .titles {
   font-family: 'Libre Baskerville', serif;
-  font-size: 22px;
+  font-size: 16px;
   width: 50%;
   color: white;
 
 }
 
+.regLogTitle {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 25px;
+  text-align: center;
+}
+
+.formTitles {
+  margin-top: 10px;
+  font-family: 'Libre Baskerville', serif;
+}
 
 .page_top {
     border-bottom: 1px solid #999592;   
@@ -130,13 +161,18 @@ font-family: 'Libre Baskerville', serif;
 }
 
 
+.loginRegister:hover {
+  color: #b46875;
+}
 
 .dropbtn {
-  background-color: rgb(41, 37, 37);
+  background-color: black;
   color: white;
-  padding: 16px;
+  padding-bottom: 10px;
+  padding-left: 15px;
   font-size: 16px;
   border: none;
+  height: 20px;
 font-family: 'Libre Baskerville', serif;
 }
 
@@ -177,27 +213,31 @@ font-family: 'Libre Baskerville', serif;
 .dropdown:hover .dropbtn {background-color: #b46875;}
 
 input {
-  color: white;
-  background-color: rgb(31, 27, 27);
+  background-color: rgb(41, 37, 37);
   padding: 10px;
+  border-radius: 7%;
+  border-color: black;
+  height: 20px;
 }
 
 input:focus {
-  background-color: rgb(61, 54, 54);
+  background-color: #b46875;
+  opacity: 0.5;
   color: black;
 }
 
-/*
+
 input:-webkit-autofill {
-  -webkit-text-fill-color: white !important;
-  -webkit-box-shadow: 0 0 0 30px rgb(31, 27, 27) inset !important;
+  -webkit-text-fill-color:  #b46875 !important;
+  -webkit-box-shadow: 0 0 0 30px  rgb(41, 37, 37) inset !important;
 }
 
+
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: black !important;
-  -webkit-box-shadow: 0 0 0 30px rgb(61, 54, 54) inset !important;
+  -webkit-text-fill-color: rgb(5, 5, 5) !important;
+  -webkit-box-shadow: 0 0 0 30px rgb(204, 117, 150) inset !important;
 }
-*/
+
 
 footer .logo {
   text-align: center;
@@ -445,10 +485,26 @@ color: white;
   padding: 5px;
   margin-right: 5px;
   height: 30px;
-  width: 140px;
+  width: 130px;
   margin-top: 5px;
   opacity: 0.95;
   cursor: pointer;
+  text-align: center;
+font-family: 'Libre Baskerville', serif;
+border-radius: 7%;
+}
+
+.fancyButton2 {
+  background-color:  rgb(24, 23, 23);
+  color: white;
+  border: 1px solid white;
+  margin: 5px;
+  height: 25px;
+  width: 90px;
+  margin-top: 5px;
+  opacity: 0.95;
+  cursor: pointer;
+  text-align: center;
 font-family: 'Libre Baskerville', serif;
 border-radius: 7%;
 }

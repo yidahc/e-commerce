@@ -6,6 +6,11 @@ import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope';
 
 const Footer = () => {
+
+    const openSubscribeForm = () => {
+        console.log("need subscription form")
+    }
+
     return (
         <footer className="bck_b_dark">
             <div className="container">
@@ -17,7 +22,9 @@ const Footer = () => {
                         <h2 className="titles">Informes</h2>
                     </div> 
                     <div className="left">
-                        <h2 className="titles subscribe">Suscríbete</h2>
+                        <span className="titles subscribe">
+                        <button className="dropbtn" onClick={()=> openSubscribeForm()}> Suscríbete </button>
+                        </span>
                     </div>      
                 </div>             
                         <div className="business_nfo">

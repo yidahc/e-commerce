@@ -3,8 +3,9 @@ import React from 'react';
 const CartProductBlock = ({products,removeItem}) => {
 
     const renderCartImage = (images) => {
+        let path = "/images/"
         if(images.length > 0){
-            return images[0].url
+            return path.concat(images[0])
         } else {
             return '/images/product1.jpg'
         }

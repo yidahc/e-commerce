@@ -105,7 +105,7 @@ class Header extends React.Component {
                  </span>
                     <span>
                          { !this.props.user.userData ||!this.props.user.userData.isAuth ?
-                            <span className="headerSections2" >
+                            <span className="headerSections2 loginRegister" >
                             <div>
                             <Login />
                             </div>
@@ -114,13 +114,17 @@ class Header extends React.Component {
                             </div>
                             </span>
                             : 
-                          <span className="headerSections2">
-                             <button  className="dropbtn"  onClick={()=> this.logoutHandler()}> Cerrar Session </button>
-                             <span className="dropbtn" >
-                             <span className="dropbtn" >{this.props.user.userData.cart ? this.props.user.userData.cart.length:0}</span>
+                          <span className="headerSections2 loginRegister">
+                            <div>
+                             <button className="dropbtn" onClick={()=> this.logoutHandler()}> Cerrar Session </button>
+                             </div>
+                             <span className="headerSections2 loginRegister" >
+                            <div>
+                             <span  style={{color:"#b46875"}}>{this.props.user.userData.cart ? this.props.user.userData.cart.length:0}</span>
                               <Link className="link" to='/Cart'>
                              Carrito de Compras
                              </Link>
+                            </div>
                              </span>
                           </span>
                          }   

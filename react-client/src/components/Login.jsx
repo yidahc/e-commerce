@@ -106,14 +106,14 @@ class Login extends React.Component {
           <button className="dropbtn" onClick={this.openForm}>Iniciar Sesion</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'block' : 'none' }}>
           <form onSubmit={(e)=>this.handleSubmit(e)} className="form-container">
-          <h1 >Iniciar Sesion</h1>
-            <label><b>Email</b></label>
+          <h1 className="regLogTitle">Iniciar Sesion</h1>
+            <div className="formTitles"><label><b>Email</b></label></div>
               <FormField
                 id={'email'}
                 formdata={this.state.formdata.email}
                 change={(element)=> this.handleInput(element)}
                 />
-            <label><b>Contraseña</b></label>
+            <div className="formTitles"><label><b>Contraseña</b></label></div>
             <FormField
                 id={'password'}
                 formdata={this.state.formdata.password}

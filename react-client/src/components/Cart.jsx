@@ -176,7 +176,7 @@ showNoItemMessage () {
                                onChange={this.handleInput}
                              />
                              </label>
-                             <button style={{textAlign: "center"}}
+                             <button className="fancyButton2"
                                onClick={this.handleSubmit}
                              >Agregar</button>
                              </form>
