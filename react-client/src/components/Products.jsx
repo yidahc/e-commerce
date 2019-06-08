@@ -132,7 +132,8 @@ showFilteredResults (filters) {
        filters
    )).then(()=>{
        this.setState({
-           skip:0
+           skip:0,
+           toShop: this.props.products.toShop
        })
    })
 }
@@ -147,7 +148,8 @@ loadMoreCards () {
       this.state.toShop
   )).then(()=>{
       this.setState({
-          skip
+          skip: skip,
+          toShop: this.props.products.toShop
       })
   })
 }
