@@ -3,22 +3,28 @@ import Card from './card';
 
 
 
-const CardBlockShop = (props) => {
+class CardBlockShop extends React.Component {
+    constructor(props){
+        super(props);
+            this.state= {
+                cardImages: [
+                    '/images/product1.jpg', '/images/product2.jpg'
+                 ],
+            }
+    }
+    /*
+    componentDidUpdate(prevProps){
+        if (this.props !== prevProps) {
+            this.setState ({
+                listItems: this.props.list
+            })
+          }
+          console.log(this.state.listItems)
+    }
+*/
 
-    const renderCards = () => {     
-        return (
-        props.list ? 
-            props.list.map(card=> (           
-                <Card
-                    key={card._id}
-                    {...card}
-                    grid={props.grid}
-                />
-             ))
-        :null
-    )
-  }
-
+render(){
+    const props = this.props;
     return (
         <div className="card_block_shop">
             <div>
@@ -30,12 +36,22 @@ const CardBlockShop = (props) => {
                             </div>
                         :null
                     :null}
-                    { renderCards(props.list)}
-                </div>
+                    { this.props.list ?
+                            this.props.list.map(card=> (           
+                                <Card
+                                    key={card._id}
+                                    {...card}
+                                    grid={props.grid}
+                                    images={card.images}
+                                />
+                             ))
+                             : null
+                            }                </div>
 
             </div>
         </div>
     );
+  }
 };
 
 export default CardBlockShop;

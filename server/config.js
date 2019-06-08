@@ -158,9 +158,11 @@ app.post('/api/product/category', (req, res)=>{
   })
 });
 
-// labiales -> 5cf836a9c380506ed07762b3
-// brochas -> 5cf836cfc380506ed07762b4
-// rubores -> 5cf836dec380506ed07762b5
+// labiales -> "5cfb46aab2d2232937385048"
+// brochas -> "5cfb469fb2d2232937385047"
+// rubores -> "5cfb4693b2d2232937385046"
+// iluminadores -> "5cfb46ceb2d2232937385049"
+// paletas de sombras -> "5cfb46ddb2d223293738504a"
 
 app.get('/api/product/categories', (req, res)=>{
   Category.find({}, (err, category)=>{
@@ -180,8 +182,11 @@ app.post('/api/product/brand', (req, res) => {
   })
 });
 
-// sigma -> 5cf8358bc380506ed07762b1
-// DOC -> 5cf835b8c380506ed07762b2
+// Dose Of Colors -> "5cfb477eb2d223293738504b",
+// Sigma Beauty -> "5cfb4789b2d223293738504c"
+// E.L.F -> "5cfb47a1b2d223293738504d"
+// Becca -> "5cfb47b5b2d223293738504e"
+// W n' W -> "5cfb47bcb2d223293738504f"
 
 app.get('/api/product/brands', (req, res) =>{
   Brand.find({},(err, brands)=>{
@@ -413,55 +418,110 @@ module.exports = app;
 
 /*
 response from app.post('/api/product/shop',
-
 {
-    "size": 2,
+    "size": 4,
     "articles": [
         {
-            "_id": "5cf83a304069f9702aa58b5a",
-            "updatedAt": "2019-06-05T21:54:56.603Z",
-            "createdAt": "2019-06-05T21:54:56.603Z",
-            "name": "Dose Of Colors Labial Liquido Mate Tono Fresa",
-            "description": "Matte Liquid Lipsticks de Dose Of Colors. Un lipstick que brinda una increíble textura mate aterciopelada.Se aplica en forma líquida y al secar crea labios súper besables que atraparán todas las miradas. Tono Fresa",
-            "price": 350,
+            "_id": "5cfb4f229288292e7153c598",
+            "updatedAt": "2019-06-08T06:01:06.351Z",
+            "createdAt": "2019-06-08T06:01:06.351Z",
+            "name": "Mini Duo Iluminadores - Tono Opal",
+            "description": "Mejora tus características con el resplador del iluminador en tono Opal ahora en su presentación de viaje 'Glow on The Go'. En presentaciones líquida y en polvo garantizarás un brillo sin igual y un maquillaje luminiscente que te permitirá construir el resultado según elijas que intensidad brindar a tu look.",
+            "price": 660,
             "brand": {
-                "_id": "5cf835b8c380506ed07762b2",
-                "name": "Dose Of Colors",
+                "_id": "5cfb47b5b2d223293738504e",
+                "name": "Becca",
                 "__v": 0
             },
             "available": true,
             "category": {
-                "_id": "5cf836a9c380506ed07762b3",
-                "name": "labiales",
+                "_id": "5cfb46ceb2d2232937385049",
+                "name": "iluminadores",
                 "__v": 0
             },
             "publish": true,
             "__v": 0,
-            "images": [],
+            "images": [
+                "BeccaDuoOpal.jpg"
+            ],
             "sold": 0,
             "shipping": true
         },
         {
-            "_id": "5cf839134069f9702aa58b59",
-            "updatedAt": "2019-06-05T21:50:11.899Z",
-            "createdAt": "2019-06-05T21:50:11.899Z",
-            "name": "Brocha Sigma F64 Soft Blend Concealer",
-            "description": "Para pulir y aplicar corrector ligero en áreas amplias o para aplicar un acabado completo en el rostro (18.89 cm).",
-            "price": 320,
+            "_id": "5cfb4cbd9288292e7153c597",
+            "updatedAt": "2019-06-08T05:50:53.989Z",
+            "createdAt": "2019-06-08T05:50:53.989Z",
+            "name": "Sigmax Kabuki Brush Kit",
+            "description": "Set de 5 brochas kabuki para pulir y difuminar cualquier producto en líquido, polvo o crema. Hechas de fibras sigmax hipoalergenicas",
+            "price": 2500,
             "brand": {
-                "_id": "5cf8358bc380506ed07762b1",
+                "_id": "5cfb4789b2d223293738504c",
                 "name": "Sigma Beauty",
                 "__v": 0
             },
             "available": true,
             "category": {
-                "_id": "5cf836cfc380506ed07762b4",
+                "_id": "5cfb469fb2d2232937385047",
                 "name": "brochas",
                 "__v": 0
             },
             "publish": true,
             "__v": 0,
-            "images": [],
+            "images": [
+                "SigmaKabuki5Set.jpg"
+            ],
+            "sold": 0,
+            "shipping": true
+        },
+        {
+            "_id": "5cfb4ae39288292e7153c596",
+            "updatedAt": "2019-06-08T05:42:59.242Z",
+            "createdAt": "2019-06-08T05:42:59.242Z",
+            "name": "Brocha Sigma F64 Soft Blend Concealer",
+            "description": "Para pulir y aplicar corrector ligero en áreas amplias o para aplicar un acabado completo en el rostro (18.89 cm).",
+            "price": 320,
+            "brand": {
+                "_id": "5cfb4789b2d223293738504c",
+                "name": "Sigma Beauty",
+                "__v": 0
+            },
+            "available": true,
+            "category": {
+                "_id": "5cfb469fb2d2232937385047",
+                "name": "brochas",
+                "__v": 0
+            },
+            "publish": true,
+            "__v": 0,
+            "images": [
+                "Sigmaf64.jpg"
+            ],
+            "sold": 0,
+            "shipping": true
+        },
+        {
+            "_id": "5cfb4aa49288292e7153c595",
+            "updatedAt": "2019-06-08T05:41:56.758Z",
+            "createdAt": "2019-06-08T05:41:56.758Z",
+            "name": "Labial Liquido Mate - Tono Fresa",
+            "description": "Matte Liquid Lipsticks de Dose Of Colors. Un lipstick que brinda una increíble textura mate aterciopelada.Se aplica en forma líquida y al secar crea labios súper besables que atraparán todas las miradas. Tono Fresa",
+            "price": 350,
+            "brand": {
+                "_id": "5cfb477eb2d223293738504b",
+                "name": "Dose Of Colors",
+                "__v": 0
+            },
+            "available": true,
+            "category": {
+                "_id": "5cfb46aab2d2232937385048",
+                "name": "labiales",
+                "__v": 0
+            },
+            "publish": true,
+            "__v": 0,
+            "images": [
+                "DOCfresa.jpg"
+            ],
             "sold": 0,
             "shipping": true
         }

@@ -4,37 +4,40 @@ import Ybutton from './button.js';
 import { connect } from 'react-redux';
 import { addToCart } from '../actions/user_actions.js';
 
-const cardImages = [
-    '/images/product1.jpg', '/images/product2.jpg', '/images/product3.jpg', '/images/product4.jpg'
- ];
+
+ 
 
 class Card extends React.Component {
 
+
     renderCardImage(images){
+        let path = "/images/"
         if(images.length > 0){
-            return images[0]
+            return path.concat(images[0])
         } else {
             return '/images/product1.jpg'
-        }
+        } 
+  
     }
 
+    
 
     render() {
         const props = this.props;
         return (
             <div className={`card_item_wrapper ${props.grid}`}>
-                <div
-                    className="image"
-                    style={{
-                        background:`url(${this.renderCardImage(props.images)}) no-repeat`}}>
+            <div
+                className="image"
+                style={{
+                    background:`url(${this.renderCardImage(props.images)}) no-repeat`
+                }}
+            >  </div>
+                <div className="action_container">
+                    <div className="tags">
+                        <div className="brand">{props.brand.name}</div>
+                        <div className="name">{props.name}</div>
+                        <div className="name">${props.price}</div>
                     </div>
-                    <div className="action_container">
-                        <div className="tags">
-                            <div className="brand">{props.brand.name}</div>
-                            <div className="name">{props.name}</div>
-                            <div className="name">${props.price}</div>
-                        </div>
-                    
                     { props.grid ?
                         <div className="description">
                             <p>
@@ -48,7 +51,7 @@ class Card extends React.Component {
                             <Ybutton
                                 type="default"
                                 altClass="card_link"
-                                title="Ver producto"
+                                title="Ver Producto"
                                 linkTo={`/product_detail/${props._id}`}
                                 addStyles={{
                                     margin: '10px 0 0 0'
@@ -69,7 +72,7 @@ class Card extends React.Component {
                     </div>
                 </div>
             </div>
-        );
+    );
     }
 }
 
