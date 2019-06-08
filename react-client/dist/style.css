@@ -365,6 +365,7 @@ color: white;
   font-size: 18px;
   font-weight: 500;
   font-family: 'Libre Baskerville', serif;
+  text-align: left;
 }
 
 .card_item_wrapper .tags .price {
@@ -416,11 +417,6 @@ color: white;
   font-size: 21px;
 }
 
-
-.card_item_wrapper.grid_bars .tags .brand,
-.card_item_wrapper.grid_bars .tags .name {
-  float:left
-}
 
 .card_item_wrapper.grid_bars .tags .price {
   float:right;
