@@ -77,7 +77,7 @@ class Login extends React.Component {
               formSuccess: true,
               showForm: !this.state.showForm,
             });            
-            this.props.history.push('/UserDashboard')
+            this.props.history.push('/Products')
           } else {
             this.setState ({
               formError: true
@@ -125,8 +125,8 @@ class Login extends React.Component {
                   </div>
                   : null
                 }
-            <button className="fancyButton" type="submit" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
-          <button className="fancyButton" type="button" onClick={this.openForm}>Cerrar</button>
+            <button className="fancyButton2" type="submit" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
+          <button className="fancyButton2" type="button" onClick={this.openForm}>Cerrar</button>
         </form>
         </div>
         </span>

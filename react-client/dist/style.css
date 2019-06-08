@@ -88,7 +88,7 @@ font-family: 'Libre Baskerville', serif;
 .form-popup {
   display: none;
   position: absolute;
-  top: 14%;
+  top: 90px;
   right: 0;
   border: none;
   z-index: 9;
@@ -135,6 +135,7 @@ font-family: 'Libre Baskerville', serif;
 font-family: 'Libre Baskerville', serif;
 }
 
+
 .titles {
   font-family: 'Libre Baskerville', serif;
   font-size: 16px;
@@ -150,6 +151,7 @@ font-family: 'Libre Baskerville', serif;
 }
 
 .formTitles {
+  text-align: center;
   margin-top: 10px;
   font-family: 'Libre Baskerville', serif;
 }
@@ -214,6 +216,7 @@ font-family: 'Libre Baskerville', serif;
 
 input {
   background-color: rgb(41, 37, 37);
+  color: #b46875;
   padding: 10px;
   border-radius: 7%;
   border-color: black;

@@ -150,7 +150,7 @@ class Register extends React.Component {
     render () {
         return (
         <span>   
-          <button className="dropbtn" onClick={this.openForm}>Crea Una Cuenta</button>
+          <button className="dropbtn" onClick={this.openForm}>Crear Una Cuenta</button>
           <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'block' : 'none' }}>
           <form className="form-container" onSubmit={(e)=>  this.handleSubmit(e)}>
           <h1 className="regLogTitle">Crear Una Cuenta</h1>

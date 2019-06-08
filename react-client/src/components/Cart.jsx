@@ -1,7 +1,7 @@
 import React from 'react';
 import Paypal from '../utils/Paypal.jsx';
 import { connect } from 'react-redux';
-import UserLayout from '../components/Layouts/UserLayout.jsx';
+// import UserLayout from '../components/Layouts/UserLayout.jsx';
 import CartProductBlock from '../utils/cartproductblock';
 import { getCartItems, removeCartItem ,onSuccessBuy} from '../actions/user_actions.js';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -148,9 +148,8 @@ showNoItemMessage () {
   render () {
     const { total, discount, discountApplied, discountError } = this.state;
     return (  
-      <UserLayout>
  <div>
-                    <h1>Mi Carrito</h1>
+                    <h1 className="formTitles">Mi Carrito</h1>
                     <div className="cartCard">
                         <CartProductBlock
                             products={this.props.user}
@@ -214,7 +213,6 @@ showNoItemMessage () {
                     </div>
                     </div>
                     </div>
-      </UserLayout>
     )
   }
 }

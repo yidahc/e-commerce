@@ -6,15 +6,15 @@ import { connect } from 'react-redux';
 const links = [
     {
         name: 'Mi Cuenta',
-        linkTo: '/user/dashboard'
+        linkTo: '/UserDashboard'
     },
     {
         name: 'Datos de Usuario',
-        linkTo: '/user/user_profile'
+        linkTo: '/UserProfile'
     },
     {
         name: 'Carrito de compras',
-        linkTo: '/user/cart'
+        linkTo: '/Cart'
     },
 ]
 
@@ -22,9 +22,11 @@ const UserLayout = (props) => {
 
     const generateLinks = (links) => (
         links.map((item,i)=>(
+            <div>
             <Link to={item.linkTo} key={i}>
                 {item.name}
             </Link>
+            </div>
         ))
     )
 
@@ -33,12 +35,11 @@ const UserLayout = (props) => {
 <div className="container">
             <div className="user_container">
                 <div className="user_left_nav">
-                    <h2>Mi Cuenta</h2>
                     <div className="links">
                         { generateLinks(links)}
                     </div>
                 </div>
-                <div className="user_right">
+                <div>
                     {props.children}
                 </div>
             </div>

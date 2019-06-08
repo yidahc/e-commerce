@@ -34,7 +34,7 @@ class Card extends React.Component {
             >  </div>
                 <div className="action_container">
                     <div className="tags">
-                        <div className="brand">{props.brand.name}</div>
+                        <div><div className="brand">{props.brand.name}</div></div>
                         <div className="name">{props.name}</div>
                         <div className="name">${props.price}</div>
                     </div>
