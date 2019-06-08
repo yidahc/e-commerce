@@ -28,13 +28,13 @@ class App extends React.Component {
       items: []
     }
   }
-
+/*
   componentDidMount() {
     axios.get('/api/product/brands').then(response => {
       console.log(response)
     })
   }
-
+*/
  /*
   componentDidMount() {
     $.ajax({

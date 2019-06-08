@@ -1,19 +1,17 @@
 import React from 'react';
-import UserLayout from './Layouts/UserLayout.jsx';
+// import UserLayout from './Layouts/UserLayout.jsx';
 import Ybutton from '../utils/button.js';
 
 const UserDashboard = ({user}) => {
     return (
-        <UserLayout>
             <div>
-                
-                <div>
-                    <h2>Datos de Usuario</h2>
+                <div className="user_nfo_panel">
+                    <h2 className="formTitles">Datos de Usuario</h2>
                     { user.userData ? (
                     <div>
-                        <span>{user.userData.name}</span>
-                        <span>{user.userData.lastname}</span>
-                        <span>{user.userData.email}</span>
+                        <div>{user.userData.name}</div>
+                        <div>{user.userData.lastname}</div>
+                        <div>{user.userData.email}</div>
                     </div>
                     )
                     : null
@@ -25,16 +23,13 @@ const UserDashboard = ({user}) => {
                     />
                 </div>
 
-                <div>
-                    <h1>Historial de Compras</h1>
-                    <div>
-                            history
+                <div className="user_nfo_panel">
+                    <h2 className="formTitles">Historial de Compras</h2>
+                    <div className="user_product_block_wrapper">
+                            Historial
                     </div>            
                 </div>
-                
-            </div>
-        </UserLayout>
-        
+            </div>        
     );
 };
 

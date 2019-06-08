@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 
 const links = [
     {
         name: 'Mi Cuenta',
-        linkTo: '/user/dashboard'
+        linkTo: '/UserDashboard'
     },
     {
         name: 'Datos de Usuario',
-        linkTo: '/user/user_profile'
+        linkTo: '/UserProfile'
     },
     {
         name: 'Carrito de compras',
-        linkTo: '/user/cart'
+        linkTo: '/Cart'
     },
 ]
 
@@ -20,19 +22,20 @@ const UserLayout = (props) => {
 
     const generateLinks = (links) => (
         links.map((item,i)=>(
+            <div>
             <Link to={item.linkTo} key={i}>
                 {item.name}
             </Link>
+            </div>
         ))
     )
 
 
     return (
-        <div>
-            <div>
-                <div>
-                    <h2>Mi Cuenta</h2>
-                    <div>
+<div className="container">
+            <div className="user_container">
+                <div className="user_left_nav">
+                    <div className="links">
                         { generateLinks(links)}
                     </div>
                 </div>
@@ -44,4 +47,10 @@ const UserLayout = (props) => {
     );
 };
 
-export default UserLayout;
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(UserLayout);

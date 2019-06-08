@@ -19,7 +19,6 @@ class Home extends React.Component {
     return (  
       <div>
      <MainCarousel />
-<NavLink to="/products"><button>Productos</button></NavLink>
       </div>
     );
   }

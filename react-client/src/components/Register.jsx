@@ -150,35 +150,35 @@ class Register extends React.Component {
     render () {
         return (
         <span>   
-          <button className="open-button" onClick={this.openForm}>Crea Una Cuenta</button>
-          <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
+          <button className="dropbtn" onClick={this.openForm}>Crear Una Cuenta</button>
+          <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'block' : 'none' }}>
           <form className="form-container" onSubmit={(e)=>  this.handleSubmit(e)}>
-          <h1 >Crear Una Cuenta</h1>
-            <label><b>Nombre</b></label>
+          <h1 className="regLogTitle">Crear Una Cuenta</h1>
+            <div className="formTitles"><label><b>Nombre</b></label></div>
             <FormField
               id={'name'}
               formdata={this.state.formdata.name}
               change={(element)=> this.handleInput(element)}
             />
-            <label><b>Apellido</b></label>
+           <div className="formTitles"><label><b>Apellido</b></label> </div>
             <FormField
               id={'lastname'}
               formdata={this.state.formdata.lastname}
               change={(element)=> this.handleInput(element)}
             />
-            <label><b>Email</b></label>
+            <div className="formTitles"><label><b>Email</b></label> </div>
             <FormField
               id={'email'}
               formdata={this.state.formdata.email}
               change={(element)=> this.handleInput(element)}
             />
-            <label><b>Contraseña</b></label>
+            <div className="formTitles"><label><b>Contraseña</b></label> </div>
             <FormField
               id={'password'}
               formdata={this.state.formdata.password}
               change={(element)=> this.handleInput(element)}
             />
-             <label><b>Confirmar Contraseña</b></label>
+             <div className="formTitles"><label><b>Confirmar Contraseña</b></label> </div>
             <FormField
               id={'confirmPassword'}
               formdata={this.state.formdata.confirmPassword}

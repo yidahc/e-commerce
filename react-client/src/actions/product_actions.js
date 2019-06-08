@@ -24,20 +24,20 @@ export function getProductsByArrival(){
 
 export function getProductsToShop(skip, limit,filters =[], previousState = []){
     const data = {
-        limit,
-        skip,
-        filters
+        skip: skip,
+        limit: limit,
+        filters: filters,
     }
 
     const request = axios.post('/api/product/shop',data)
                 .then(response => {
-                    let newState = [
+                    let moreState = [
                         ...previousState,
                         ...response.data.articles
                     ];
                     return {
                         size: response.data.size,
-                        articles: newState
+                        articles: moreState
                     }
                 });
 

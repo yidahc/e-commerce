@@ -48,8 +48,8 @@ const productSchema = mongoose.Schema({
     },
 
     images:{
+        required: true,
         type: Array,
-        default:[]
     }
 },{timestamps:true});
 

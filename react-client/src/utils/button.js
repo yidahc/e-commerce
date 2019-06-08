@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faShoppingBag from '@fortawesome/fontawesome-free-solid/faShoppingBag';
-
+import { Button, Icon } from 'semantic-ui-react'
 
 const Ybutton = (props) => {
     const buttons = () =>{
@@ -19,7 +19,17 @@ const Ybutton = (props) => {
             break;
             case "bag_link":
             template = 
-                <div className="bag_link"
+            <span>
+            <Button  onClick={()=>{
+                props.runAction();
+            }} animated='vertical'>
+              <Button.Content hidden> Agregar </Button.Content>
+              <Button.Content visible>
+              <Icon name='shop' />
+              </Button.Content>
+            </Button>
+          </span>  
+               /* <div className="bag_link"
                     onClick={()=>{
                         props.runAction();
                     }}
@@ -27,8 +37,21 @@ const Ybutton = (props) => {
                     <FontAwesomeIcon
                         icon={faShoppingBag}
                     />
-                </div>
+                </div> */
         break;
+        case "add_to_cart_link":
+                template =   
+                     <div className="add_to_cart_link"
+                        onClick={()=>{
+                            props.runAction();
+                        }}
+                    >
+                        <FontAwesomeIcon
+                            icon={faShoppingBag}
+                        />
+                        Add to cart
+                    </div>
+            break;
             default: 
                 template = ''; 
         }
@@ -37,7 +60,7 @@ const Ybutton = (props) => {
 
     return (
         <div className="my_link">
-            {buttons()}
+            {buttons()} 
         </div>
     );
 };

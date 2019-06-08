@@ -1,11 +1,21 @@
 import React from 'react';
-import Paypal from './Paypal.jsx';
+import Paypal from '../utils/Paypal.jsx';
+import { connect } from 'react-redux';
+// import UserLayout from '../components/Layouts/UserLayout.jsx';
+import CartProductBlock from '../utils/cartproductblock';
+import { getCartItems, removeCartItem ,onSuccessBuy} from '../actions/user_actions.js';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faFrown from '@fortawesome/fontawesome-free-solid/faFrown'
+import faSmile from '@fortawesome/fontawesome-free-solid/faSmile'
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
+      loading: true,
       total: 50,
+      showTotal: false,
+      showSuccess: false,
       discount: '',
       discountApplied: false,
       discountError: false,
@@ -14,7 +24,66 @@ class Cart extends React.Component {
     this.transactionCanceled = this.transactionCanceled.bind(this);
     this.transactionSuccess = this.transactionSuccess.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.calculateTotal = this.calculateTotal.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
+    this.showNoItemMessage = this.showNoItemMessage.bind(this);
+  }
+
+  componentDidMount(){
+    let cartItems = [];
+    let user = this.props.user;
+
+    if(user.userData.cart){
+        if(user.userData.cart.length > 0){
+            user.userData.cart.forEach(item=>{
+                cartItems.push(item.id)
+            });
+            this.props.dispatch(getCartItems(cartItems,user.userData.cart))
+            .then(()=>{
+                if(this.props.user.cartDetail.length > 0){
+                    this.calculateTotal(this.props.user.cartDetail);
+                } 
+            })
+        }
+    }
+}
+
+calculateTotal (cartDetail) {
+  let total = 0;
+
+  cartDetail.forEach(item=>{
+      total += parseInt(item.price, 10) * item.quantity
+  });
+
+  this.setState({
+      total,
+      showTotal: true
+  });
+}
+
+removeFromCart (id) {
+  this.props.dispatch(removeCartItem(id))
+  .then(()=>{
+      if(this.props.user.cartDetail.length <= 0){
+          this.setState({
+              showTotal: false
+          })
+      } else{
+          this.calculateTotal(this.props.user.cartDetail)
+      }
+  })
+}
+
+showNoItemMessage () {
+  return (
+  <div className="cart_no_items">
+      <FontAwesomeIcon icon={faFrown}/>
+      <div>
+          Carrito vacio
+      </div>
+  </div>
+)
   }
 
   handleInput(event) {
@@ -79,34 +148,79 @@ class Cart extends React.Component {
   render () {
     const { total, discount, discountApplied, discountError } = this.state;
     return (  
-      <div>I am the Cart component
-        <h3>Total a pagar: {`$${total}`}</h3>
-        <form>
-        <label>
-        Descuento: {' '}
-        <input
-          type="string"
-          name= "discount"
-          value= {discount}
-          placeholder= {"Ingresa cupón de descuento"}
-          onChange={this.handleInput}
-        />
-        </label>
-        <button style={{textAlign: "center"}}
-          onClick={this.handleSubmit}
-        >Agregar</button>
-        </form>
-        <p>{discountApplied ? "Descuento ha sido aplicado" : null }
-           {discountError ? "Cupón inválido" : null }
-        </p>
+ <div>
+                    <h1 className="formTitles">Mi Carrito</h1>
+                    <div className="cartCard">
+                        <CartProductBlock
+                            products={this.props.user}
+                            type="cart"
+                            removeItem={(id)=> this.removeFromCart(id)}
+                        />
+                    <div className= "cartBottom">
+                        { this.state.showTotal ?
+                            <div>
+                                <div className="user_cart_sum">
+                                    <div>
+                                        Cantidad Total: $ {this.state.total}
+                                    </div>
+                                </div>
+                             <form>
+                             <label>
+                             Descuento: {' '}
+                             <input
+                               type="string"
+                               name= "discount"
+                               value= {discount}
+                               placeholder= {"Ingresa cupón de descuento"}
+                               onChange={this.handleInput}
+                             />
+                             </label>
+                             <button className="fancyButton2"
+                               onClick={this.handleSubmit}
+                             >Agregar</button>
+                             </form>
+                                      {discountApplied ? <p className= "error"> "Descuento ha sido aplicado" </p>: null }
+                                      {discountError ? <p className= "error"> "Cupón inválido" </p> : null }
+                            </div>                            
+                        :
+                            this.state.showSuccess ?
+                                <div className="cart_success">
+                                    <FontAwesomeIcon icon={faSmile}/>
+                                    <div>
+                                        Gracias, su pago fue procesado
+                                    </div>
+                                    <div>
+                                        Favor de revisar su cuenta de paypal para confirmar
+                                    </div>
+                                </div>
+                            :
+                            this.showNoItemMessage()
+                        }
+                    </div>
+                    <div className= "cartBottom">
+                    {
+                        this.state.showTotal ?
+
+
           <Paypal 
             toPay={this.state.total}
             transactionError={(data)=>this.transactionError(data)}
             transactionCanceled={(data)=>this.transactionCanceled(data)}
             onSuccess={(data)=>this.transactionSuccess(data)}
           />
-      </div>
+          : null 
+                    }
+                    </div>
+                    </div>
+                    </div>
     )
   }
 }
-export default Cart;
+
+const mapStateToProps = (state) => {
+  return {
+      user: state.user
+  }
+}
+
+export default connect(mapStateToProps) (Cart);

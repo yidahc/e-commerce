@@ -77,7 +77,7 @@ class Login extends React.Component {
               formSuccess: true,
               showForm: !this.state.showForm,
             });            
-            this.props.history.push('/UserDashboard')
+            this.props.history.push('/Products')
           } else {
             this.setState ({
               formError: true
@@ -103,17 +103,17 @@ class Login extends React.Component {
     render () {
         return (
           <span>      
-          <button className="open-button" onClick={this.openForm}>Iniciar Sesion</button>
-          <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'inline' : 'none' }}>
+          <button className="dropbtn" onClick={this.openForm}>Iniciar Sesion</button>
+          <div className="form-popup" id="myForm" style={{display: this.state.showForm ? 'block' : 'none' }}>
           <form onSubmit={(e)=>this.handleSubmit(e)} className="form-container">
-          <h1 >Ingresar</h1>
-            <label><b>Email</b></label>
+          <h1 className="regLogTitle">Iniciar Sesion</h1>
+            <div className="formTitles"><label><b>Email</b></label></div>
               <FormField
                 id={'email'}
                 formdata={this.state.formdata.email}
                 change={(element)=> this.handleInput(element)}
                 />
-            <label><b>Contraseña</b></label>
+            <div className="formTitles"><label><b>Contraseña</b></label></div>
             <FormField
                 id={'password'}
                 formdata={this.state.formdata.password}
@@ -125,8 +125,8 @@ class Login extends React.Component {
                   </div>
                   : null
                 }
-            <button className="fancyButton" type="submit" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
-          <button className="fancyButton" type="button" onClick={this.openForm}>Cerrar</button>
+            <button className="fancyButton2" type="submit" onClick={(e)=>this.handleSubmit(e)}>Ingresar</button>
+          <button className="fancyButton2" type="button" onClick={this.openForm}>Cerrar</button>
         </form>
         </div>
         </span>

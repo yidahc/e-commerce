@@ -6,15 +6,27 @@ import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope';
 
 const Footer = () => {
+
+    const openSubscribeForm = () => {
+        console.log("need subscription form")
+    }
+
     return (
         <footer className="bck_b_dark">
             <div className="container">
                 <div className="logo">
-                    Yunoi
+                Narzisse
                 </div>
                 <div className="wrapper">
                     <div className="left">
-                        <h2>Informes</h2>
+                        <h2 className="titles">Informes</h2>
+                    </div> 
+                    <div className="left">
+                        <span className="titles subscribe">
+                        <button className="dropbtn" onClick={()=> openSubscribeForm()}> Suscríbete </button>
+                        </span>
+                    </div>      
+                </div>             
                         <div className="business_nfo">
                             <div className="tag">
                                 <FontAwesomeIcon icon={faClock} className="icon" />
@@ -58,18 +70,7 @@ const Footer = () => {
                             </div>
                         </div>    
                     </div>
-                    <div className="left">
-                        <h1>
-                        Síguenos
-                        </h1>
-                        <div>
-                            <div>
-                                Suscríbete al newsletter 
-                            </div>
-                        </div>
-                    </div>
-                </div>      
-            </div>
+                   
         </footer>
     );
 };
