@@ -103,15 +103,18 @@ class Header extends React.Component {
                  <span id='TitleName' className="headerSections">
                 <a href="/"> Narzisse</a>
                  </span>
-            </header>
                     <span>
                          { !this.props.user.userData ||!this.props.user.userData.isAuth ?
-                            <span className="headerSections" >
+                            <span className="headerSections2" >
+                            <div>
                             <Login />
+                            </div>
+                            <div>
                             <Register />
+                            </div>
                             </span>
                             : 
-                          <span className="headerSections">
+                          <span className="headerSections2">
                              <button  className="dropbtn"  onClick={()=> this.logoutHandler()}> Cerrar Session </button>
                              <span className="dropbtn" >
                              <span className="dropbtn" >{this.props.user.userData.cart ? this.props.user.userData.cart.length:0}</span>
@@ -121,7 +124,8 @@ class Header extends React.Component {
                              </span>
                           </span>
                          }   
-                         </span>
+                    </span>
+                    </header>
                          </div>
         );
     }

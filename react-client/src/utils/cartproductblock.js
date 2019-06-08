@@ -24,7 +24,9 @@ const CartProductBlock = ({products,removeItem}) => {
                     <div className="item">
                         <h4>Producto</h4>
                         <div>
-                            {product.brand.name} {product.name}
+                            {product.brand.name} 
+                            <div/>
+                            {product.name}
                         </div>
                     </div>
                     <div className="item">

@@ -54,7 +54,7 @@ class CollapseCheckbox extends React.Component {
                     <ListItemSecondaryAction>
                         <Checkbox
                             color="primary"
-                            onChange={this.handleToggle}
+                            onChange={()=>this.handleToggle(value._id)}
                             checked={this.state.checked.indexOf(value._id) !== -1}
                         />
                     </ListItemSecondaryAction>

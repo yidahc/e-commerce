@@ -50,7 +50,7 @@ const Ybutton = (props) => {
 
     return (
         <div className="my_link">
-            {buttons()}
+            {buttons()} 
         </div>
     );
 };

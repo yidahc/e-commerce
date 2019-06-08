@@ -151,12 +151,13 @@ showNoItemMessage () {
       <UserLayout>
  <div>
                     <h1>Mi Carrito</h1>
-                    <div className="user_cart">
+                    <div className="cartCard">
                         <CartProductBlock
                             products={this.props.user}
                             type="cart"
                             removeItem={(id)=> this.removeFromCart(id)}
                         />
+                    <div className= "cartBottom">
                         { this.state.showTotal ?
                             <div>
                                 <div className="user_cart_sum">
@@ -197,6 +198,7 @@ showNoItemMessage () {
                             this.showNoItemMessage()
                         }
                     </div>
+                    <div className= "cartBottom">
                     {
                         this.state.showTotal ?
 
@@ -209,6 +211,8 @@ showNoItemMessage () {
           />
           : null 
                     }
+                    </div>
+                    </div>
                     </div>
       </UserLayout>
     )

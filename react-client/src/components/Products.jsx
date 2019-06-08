@@ -169,8 +169,9 @@ handleGrid () {
       <div className="container">
           <div className="shop_wrapper">
               <div className="left">
-              
-                 <CollapseCheckbox
+              { !this.state.loading ? 
+               <div>
+                  <CollapseCheckbox
                       initState={true}
                       title="Marcas"
                       list={this.state.brands}
@@ -188,7 +189,9 @@ handleGrid () {
                       list={price}
                       handleFilters={(filters)=> this.handleFilters(filters,'price')}
                   />
-
+                  </div>
+                : null
+              }
               </div>
               <div className="right">
                   <div className="shop_options">
