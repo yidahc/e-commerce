@@ -12,14 +12,18 @@ export default function(state={}, action){
             return { newState, userData: action.payload }
         case 'logout_user':
             return { newState }
-            
         case 'add_to_cart':
-            return { newState, userData:{
-                userData: newState.userData,
-                cart: action.payload
-            }}
+            let teehee = newState;
+            teehee.userData.cart = action.payload;
+            return teehee;
         case 'get_cart_items':
-            return { newState,cartDetail: action.payload  }
+            newState.cartDetail = action.payload
+            let newCart = []
+            for (let i in newState.userData.cart) {
+                newCart.push(newState.userData.cart[i])
+            }
+            newState.userData.cart = newCart;
+            return newState;
         case 'remove_cart_item':
             return { 
                 newState,

@@ -201,6 +201,7 @@ app.get('/api/product/brands', (req, res) =>{
 
 app.get('/api/users/auth', auth, (req, res) => {
   // auth will find the user by token
+  console.log(req.user.cart)
   res.status(200).json({
     //user: req.user <-- all req 
     isAdmin: req.user.role === 0 ? false : true,

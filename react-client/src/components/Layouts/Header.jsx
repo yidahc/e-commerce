@@ -120,7 +120,7 @@ class Header extends React.Component {
                              </div>
                              <span className="headerSections2 loginRegister" >
                             <div>
-                             <span  style={{color:"#b46875"}}>{this.props.user.userData.cart ? this.props.user.userData.cart.length:0}</span>
+                             <span  style={{color:"#b46875"}}>{this.props.user.userData.cart ? this.props.user.userData.cart.reduce((a,e)=>a+e.quantity, 0):0}</span>
                               <Link className="link" to='/Cart'>
                              Carrito de Compras
                              </Link>
