@@ -26,15 +26,12 @@ class Card extends React.Component {
         const props = this.props;
         return (
             <div className={`card_item_wrapper ${props.grid}`}>
-            <div
-                className="image"
-                style={{
-                    background:`url(${this.renderCardImage(props.images)}) no-repeat`
-                }}
-            >  </div>
+            <img style= {{width: "200px", height: "200px"}}
+            src= {this.renderCardImage(props.images)} alt={props.name}></img>
                 <div className="action_container">
                     <div className="tags">
                         <div><div className="brand">{props.brand.name}</div></div>
+                        <br />
                         <div className="name">{props.name}</div>
                         <div className="name">${props.price}</div>
                     </div>
