@@ -145,15 +145,13 @@ showNoItemMessage () {
                      <PageTop
           title="Mi Carrito"
       />
-      { this.state.showSuccess! ?
                     <div className="cartCard">
                         <CartProductBlock
                             products={this.props.user}
                             type="cart"
                             removeItem={(id)=> this.removeFromCart(id)}
                         />
-                        :null
-                        }
+                     
 
                     <div className= "cartBottom">
                       { this.state.showTotal && total > 200 ?
@@ -220,6 +218,7 @@ showNoItemMessage () {
                     </div>
                     </div>
                     </div>
+                  
     )
   }
 }
