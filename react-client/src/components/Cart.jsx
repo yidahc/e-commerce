@@ -159,6 +159,10 @@ showNoItemMessage () {
                             removeItem={(id)=> this.removeFromCart(id)}
                         />
                     <div className= "cartBottom">
+                      { this.state.showTotal ?
+                          <div className="payDisclaimer">Ingrese dirección de envío al pagar por PayPal para válidar garantía de entrega.</div>
+                          : null
+                      }
                         { this.state.showTotal ?
                             <div>
                                 <div className="user_cart_sum">
@@ -214,8 +218,8 @@ showNoItemMessage () {
           </div>
           : null 
                      }
-         { this.state.total < 150 ?
-            <div>Favor de agregar más de $150 a su carrito para poder pagar con PayPal y recibir envío gratis</div>
+         { this.state.showTotal && total < 200 ?
+            <div>Agregue más de $2000 a su carrito para poder pagar con PayPal y recibir envío gratis</div>
             : null }
                     </div>
                     </div>

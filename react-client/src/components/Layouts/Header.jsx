@@ -34,6 +34,16 @@ class Header extends React.Component {
                 linkTo:'/UserDashboard',
                 public: false
             },
+            {
+                name:'Cómo comprar',
+                linkTo:'/HowTo',
+                public: true
+            },
+            {
+                name:'Nuestra Garantía de Entrega',
+                linkTo:'/OurGuarantee',
+                public: false
+            },
         ]
     }
     this.logoutHandler = this.logoutHandler.bind(this);
@@ -68,7 +78,7 @@ class Header extends React.Component {
         if(this.props.user.userData){
             this.state.links.forEach((item)=>{
                 if(!this.props.user.userData.isAuth){
-                    if(item.public === true){
+                    if(item.public){
                         list.push(item)
                     }
                 } else{
@@ -129,6 +139,8 @@ class Header extends React.Component {
                           </span>
                          }   
                     </span>
+                    <div></div>
+                    <div className="PageTitle promo">Envíos Gratis en Compras Mayores de $200</div>
                     </header>
                          </div>
         );
