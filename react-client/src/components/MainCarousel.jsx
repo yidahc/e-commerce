@@ -9,8 +9,7 @@ let Image3 = './images/slide30.jpg'; let alt3 = '';
 let Image4 = './images/slide40.jpg';
 let Image5 = './images/slide50.jpg';
 let Image6 = './images/slide60.jpg';
-let Image8 = './images/slide80.jpg';
-let Image9 = './images/slide90.jpg';
+let Image7 = './images/slide70.jpg';
 
 class MainCarousel extends React.Component {
     constructor() {
@@ -46,7 +45,7 @@ class MainCarousel extends React.Component {
        (<img src={Image4} alt= {alt1} />),
        (<img src={Image5} alt= {alt1} />),
        (<img src={Image6} alt= {alt1} />),
-       (<img src={Image8} alt= {alt1} />),
+       (<img src={Image7} alt= {alt1} />),
      ]}
      arrowLeft={<FontAwesomeIcon icon={faAngleDoubleLeft} className="icon-example" name="arrow-left" />}
      arrowRight={<FontAwesomeIcon icon={faAngleDoubleRight} className="icon-example" name="arrow-right" />}
