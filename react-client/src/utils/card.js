@@ -43,6 +43,14 @@ class Card extends React.Component {
                         </div>
                         :null
                     }
+                    { props.category.name === "Bases de maquillaje" ?
+                         <Ybutton 
+                         type="shadePicker"
+                         altClass="card_link"
+                         title="Elegir Tono"
+                        />
+                        : null
+                         }
                     <div className="actions">
                         <div className="button_wrapp">
                             <Ybutton
@@ -50,9 +58,6 @@ class Card extends React.Component {
                                 altClass="card_link"
                                 title="Ver Producto"
                                 linkTo={`/product_detail/${props._id}`}
-                                addStyles={{
-                                    margin: '10px 0 0 0'
-                                }}
                             />
                         </div>
                         <div className="button_wrapp">

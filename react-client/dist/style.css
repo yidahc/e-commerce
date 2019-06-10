@@ -126,28 +126,6 @@ body{
 font-family: 'Libre Baskerville', serif;
 }
 
-.link_default {
-  font-size: 16px;
-  font-family: 'Libre Baskerville', serif;
-  color: black;
-}
-
-.link_default:hover {
-  color: #b46875;
-}
-
-.link {
-  background-color: black;
-  color: white;
-  padding: 3px;
-  font-size: 16px;
-font-family: 'Libre Baskerville', serif;
-}
-
-.link:hover {
-  color: #b46875;
-font-family: 'Libre Baskerville', serif;
-}
 
 .titles {
   font-family: 'Libre Baskerville', serif;
@@ -401,6 +379,7 @@ color: white;
 .card_item_wrapper .actions .button_wrapp:nth-child(1) {
   flex-grow: 1;
   padding-right: 10px;
+  padding-top: 10px;  
 }
 
 .card_item_wrapper.grid_bars {
@@ -495,6 +474,51 @@ color: white;
 /*============================
             BUTTONS
 ==============================*/
+
+
+.link_default {
+  font-size: 16px;
+  font-family: 'Libre Baskerville', serif;
+  color: black;
+
+}
+
+.link_default:hover {
+  color: #b46875;
+}
+
+.my_link {
+  display: table;
+}
+
+.shadePicker {
+  font-size: 16px;
+  font-family: 'Libre Baskerville', serif;
+  text-align: center;
+  display: table-row;
+  position: absolute;
+  justify-content: center;
+  color: #b46875;
+  margin-left: 20%;
+  margin-bottom: 10px;
+}
+
+.shadePicker:hover {
+  color: rgb(194, 182, 182);
+}
+
+.link {
+  background-color: black;
+  color: white;
+  padding: 3px;
+  font-size: 16px;
+font-family: 'Libre Baskerville', serif;
+}
+
+.link:hover {
+  color: #b46875;
+font-family: 'Libre Baskerville', serif;
+}
 
 .fancyButton {
   background-color:  rgb(24, 23, 23);

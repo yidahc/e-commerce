@@ -158,11 +158,7 @@ app.post('/api/product/category', (req, res)=>{
   })
 });
 
-// labiales -> "5cfb46aab2d2232937385048"
-// brochas -> "5cfb469fb2d2232937385047"
-// rubores -> "5cfb4693b2d2232937385046"
-// iluminadores -> "5cfb46ceb2d2232937385049"
-// paletas de sombras -> "5cfb46ddb2d223293738504a"
+
 
 app.get('/api/product/categories', (req, res)=>{
   Category.find({}, (err, category)=>{
@@ -182,11 +178,6 @@ app.post('/api/product/brand', (req, res) => {
   })
 });
 
-// Dose Of Colors -> "5cfb477eb2d223293738504b",
-// Sigma Beauty -> "5cfb4789b2d223293738504c"
-// E.L.F -> "5cfb47a1b2d223293738504d"
-// Becca -> "5cfb47b5b2d223293738504e"
-// W n' W -> "5cfb47bcb2d223293738504f"
 
 app.get('/api/product/brands', (req, res) =>{
   Brand.find({},(err, brands)=>{

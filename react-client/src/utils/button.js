@@ -52,6 +52,15 @@ const Ybutton = (props) => {
                         Add to cart
                     </div>
             break;
+        case "shadePicker":
+        template = <Link
+                        className="shadePicker"
+                        to={props.linkTo}
+                        {...props.addStyles}
+                    >  
+                    {props.title}
+                    </Link>
+        break;
             default: 
                 template = ''; 
         }
