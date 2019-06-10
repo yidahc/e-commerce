@@ -30,31 +30,33 @@ font-family: 'Libre Baskerville', serif;
   text-align: center;
 }
 
-#TitleName {
+.TitleName {
   width:99%;
-  text-align: center;
+  text-align: left;
+  margin-left: 40%;
   font-size: 40px;
-  font-family: 'Megrim', cursive;
   color: white;
 }
-#TitleName a{
+.TitleName a{
   color: white;
+  font-family: 'Megrim', cursive;
+
 }
 
-#TitleName a:hover {
+.TitleName a:hover {
   color: #b46875;
 }
 
 .PageTitle{
   background-color: black;
   color: white;
-  padding-top: 20px;
   border: none;
   cursor: pointer;
-  /*opacity: 0.8;*/
-  align-items: start; 
+  display: flex;
+  align-items: center;
   width: 100%;
-  display:table;
+  display: float;
+  float: center;
 } 
 
 .mainCarousel {
@@ -62,7 +64,7 @@ font-family: 'Libre Baskerville', serif;
 }
 
 .headerSections {
-  margin-top: 20px;
+  margin-bottom: 0px;
   white-space: nowrap;
   display: table-cell;
 font-family: 'Libre Baskerville', serif;
@@ -75,10 +77,8 @@ font-family: 'Libre Baskerville', serif;
   text-align: right;
   background-color: black;
   color: white;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  margin-bottom: 10px;
+  text-align: right;
+  padding: 10px 5px 5px 0px;
   font-size: 16px;
   border: none;
   height: 20px;
@@ -88,7 +88,7 @@ font-family: 'Libre Baskerville', serif;
 .form-popup {
   display: none;
   position: absolute;
-  top: 90px;
+  top: 55.3px;
   right: 0;
   border: none;
   z-index: 9;
@@ -135,7 +135,6 @@ font-family: 'Libre Baskerville', serif;
 font-family: 'Libre Baskerville', serif;
 }
 
-
 .titles {
   font-family: 'Libre Baskerville', serif;
   font-size: 16px;
@@ -151,8 +150,14 @@ font-family: 'Libre Baskerville', serif;
 }
 
 .formTitles {
-  text-align: center;
+  text-align: right;
   margin-top: 10px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.componentTitles {
+  text-align: center;
+  padding-top: 20px;
   font-family: 'Libre Baskerville', serif;
 }
 
@@ -567,87 +572,45 @@ border-radius: 7%;
   color: #999592;
 }
 
-
-/*=============================
-         USER
-===============================
-
-.user_container {
-  display:flex;
-  margin-bottom: 50px;
-  min-height: 700px;
-}
-
-.user_container .user_left_nav {
-  border-right: 1px solid #f8f8f8; 
-}
-
-.user_container .user_left_nav .links a {
-  display: block;
-  border-bottom: 1px solid #dddddd;
-  font-size: 20px;
-  font-weight: 300;
-  padding: 10px 0px;
-  width: 280px;
-}
-
-.user_container  .user_right {
-  flex-grow: 1;
-  padding: 0 0 0 29px;
-}
-
-.user_container .user_nfo_panel {
-  background: #f8f8f8;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-.user_container .user_nfo_panel h1 {
-  margin: 0 0 20px 0;
-  line-height: 32px;
-  text-transform: uppercase;
-  font-size: 25px;
-}
-
-
-.user_container .user_nfo_panel span{
-  display: block;
-  font-size: 18px;
-  font-weight: 300;
-}
-*/
-
-.user_product_block {
+.cartProductblock {
   display: flex;
   flex-wrap: wrap;
   background: white;
   padding: 10px;
-  margin: 5px;
-  border: 1px solid #ebebeb;
+  margin-bottom: 10px;
+  border: none;
 }
 
-.user_product_block .item {
+.cartProductblock .item {
   flex-grow: 1;
-  flex-wrap: wrap;
+  width: 150px;
 }
 
-.user_product_block .item .image{
+.cartProductblock .item .image{
   height: 125px;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
   margin-right: 10px;
 }
-.user_product_block .item.btn {
+.cartProductblock .item.btn {
   width: 0px;
 }
 
+.userDetails {
+  text-align: left;
+  margin-left: 40%;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 20px;
+}
 
-.user_product_block .cart_remove_btn {
-  cursor: pointer;
-  background: #F44336;
-  display: inline-block;
-  padding: 5px 10px;
-  color: #ffffff;
-  margin-top: 50px;
+.userDetails div {
+padding: 10px;
+}
+
+.userTitles {
+  padding: 10px;
+  text-align: left;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px;
 }

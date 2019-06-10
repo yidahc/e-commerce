@@ -32,6 +32,11 @@ const productSchema = mongoose.Schema({
         required: true,
         type: Boolean
     },
+    amount:{
+        type: Number,
+        maxlength: 4,
+        default: 1
+    },
     category:{
         type: Schema.Types.ObjectId,
         ref: 'Category',
@@ -55,3 +60,4 @@ const productSchema = mongoose.Schema({
 
 const Product = mongoose.model('Product',productSchema);
 module.exports = { Product }
+

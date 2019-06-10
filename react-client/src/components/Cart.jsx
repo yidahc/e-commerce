@@ -149,7 +149,7 @@ showNoItemMessage () {
     const { total, discount, discountApplied, discountError } = this.state;
     return (  
  <div>
-                    <h1 className="formTitles">Mi Carrito</h1>
+                    <h1 className="componentTitles">Mi Carrito</h1>
                     <div className="cartCard">
                         <CartProductBlock
                             products={this.props.user}

@@ -25,16 +25,17 @@ export default function(state={}, action){
             newState.userData.cart = newCart;
             return newState;
         case 'remove_cart_item':
-            return { 
-                newState,
-                cartDetail: action.payload.cartDetail,
-                userData:{
-           //         newState.userData,
-                    cart: action.payload.cart
-                }
-             }
+        let result = newState;
+        result.cartDetail = action.payload.cartDetail;
+        result.userData.cart = action.payload.cart;
+        return result;
         case 'on_success_buy':
-             return {
+        let successBought = newState;
+        successBought.successBuy = action.payload.success;
+        successBought.userData.cart = action.payload.cart;
+        successBought.cartDetail = action.payload.cartDetail;
+        return successBought;
+            /* return {
                 newState,
                 successBuy: action.payload.success,
                 userData:{
@@ -43,7 +44,7 @@ export default function(state={}, action){
                 },
                 cartDetail: action.payload.cartDetail
              }
-             
+             */
         default:
             return state;
     }
