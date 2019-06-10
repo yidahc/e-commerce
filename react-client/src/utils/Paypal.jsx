@@ -5,7 +5,6 @@ class Paypal extends React.Component {
   render() {
 		const onSuccess = (payment) => {
         console.log(JSON.stringify(payment));
-        this.props.onSuccess(payment)
 		}
 
 		const onCancel = (data) => {

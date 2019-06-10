@@ -31,7 +31,8 @@ export default function(state={}, action){
         return result;
         case 'on_success_buy':
         let successBought = newState;
-        successBought.successBuy = action.payload.success;
+        successBought.user = newState.userData;
+        successBought.user.successBuy = action.payload.success;
         successBought.userData.cart = action.payload.cart;
         successBought.cartDetail = action.payload.cartDetail;
         return successBought;

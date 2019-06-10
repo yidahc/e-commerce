@@ -123,27 +123,20 @@ showNoItemMessage () {
   transactionCanceled () {
   }
 
-  transactionSuccess () {
-      /*
-      {
-        "paid":true,
-        "cancelled":false,
-        "payerID":"DC2AY9HYPXY8A",
-        "paymentID":"PAYID-LTPOB6I8J968237W3765963K",
-        "paymentToken":"EC-9R9400535G091950A",
-        "returnUrl":"https://www.sandbox.paypal.com/?paymentId=PAYID-LTPOB6I8J968237W3765963K&token=EC-9R9400535G091950A&PayerID=DC2AY9HYPXY8A",
-        "address":{
-            "recipient_name":"Yidah Curiel",
-            "line1":"Calle Juarez 1",
-            "city":"Miguel Hidalgo",
-            "state":"Ciudad de Mexico",
-            "postal_code":"11580",
-            "country_code":"MX"
-        },
-        "email":"fashion4women@gmail.com"
+  transactionSuccess (data) {
+   // this.props.dispatch(onSuccessBuy({
+    //  cartDetail: this.props.user.cartDetail,
+     // paymentData: data
+ // })).then(()=>{
+   //   if(this.props.user.successBuy){
+          this.setState({
+              showTotal: false,
+              showSuccess: true
+          })
       }
-  */
-  }
+  //)
+//}
+
 
   render () {
     const { total, discount, discountApplied, discountError } = this.state;
@@ -152,12 +145,16 @@ showNoItemMessage () {
                      <PageTop
           title="Mi Carrito"
       />
+      { this.state.showSuccess! ?
                     <div className="cartCard">
                         <CartProductBlock
                             products={this.props.user}
                             type="cart"
                             removeItem={(id)=> this.removeFromCart(id)}
                         />
+                        :null
+                        }
+
                     <div className= "cartBottom">
                       { this.state.showTotal && total > 200 ?
                           <div className="payDisclaimer">Ingrese dirección de envío al pagar por PayPal para válidar garantía de entrega.</div>

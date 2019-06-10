@@ -21,28 +21,28 @@ const price = [
   },
   {
       "_id":1,
-      "name":"$0 a $149",
-      "array":[0,149]
+      "name":"$0 a $199",
+      "array":[0,199]
   },
   {
       "_id":2,
-      "name":"$150 a $299",
-      "array":[150,299]
+      "name":"$200 a $399",
+      "array":[200,399]
   },
   {
       "_id":3,
-      "name":"$300 a $449",
-      "array":[300,449]
+      "name":"$400 a $599",
+      "array":[400,599]
   },
   {
       "_id":4,
-      "name":"$450 a $599",
-      "array":[450,599]
+      "name":"$600 a $799",
+      "array":[600,799]
   },
   {
       "_id":5,
-      "name":"Mas de $600",
-      "array":[600,1500000]
+      "name":"Mas de $800",
+      "array":[800,1500000]
   }
 ]
 
@@ -56,7 +56,7 @@ class Products extends React.Component {
       categories: [],
       toShopSize: 0,
       grid:'',
-      limit:6,
+      limit:20,
       skip:0,
       filters:{
           brand:[],

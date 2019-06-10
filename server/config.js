@@ -38,7 +38,7 @@ see bottom for response example for following post request
 
 app.post('/api/product/shop',(req,res)=>{
 
-  let order = req.body.order ? req.body.order : "desc";
+  let order = req.body.order ? req.body.order : "asc";
   let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
   let limit = req.body.limit ? parseInt(req.body.limit) : 100; 
   let skip = parseInt(req.body.skip);
@@ -93,7 +93,7 @@ above query would provide top 4 newest arrivals
 
 app.get('/api/product/articles', (req, res)=>{
 // setting defaults to return first 100 articles by id in ascending order
-  let order = req.query.order ? req.query.order : 'asc';
+  let order = req.query.order ? req.query.order : 'desc';
   let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
   let limit = req.query.limit ? parseInt(req.query.limit) : 100;
 // parseInt required since at momento of query the number is converted 
@@ -192,7 +192,6 @@ app.get('/api/product/brands', (req, res) =>{
 
 app.get('/api/users/auth', auth, (req, res) => {
   // auth will find the user by token
-  console.log(req.user.cart)
   res.status(200).json({
     //user: req.user <-- all req 
     isAdmin: req.user.role === 0 ? false : true,
@@ -214,7 +213,6 @@ app.get('/api/users/logout', auth, (req, res) => {
     // gets rid of the token after log out for security purposes
     (err,doc )=>{
         if(err) {
-          console.log(err)
           return res.json({success: false, err});
         }
         return res.status(200).send({
