@@ -1,7 +1,7 @@
 import React from 'react';
 import Paypal from '../utils/Paypal.jsx';
 import { connect } from 'react-redux';
-// import UserLayout from '../components/Layouts/UserLayout.jsx';
+import PageTop from '../utils/pagetop.js';
 import CartProductBlock from '../utils/cartproductblock';
 import { getCartItems, removeCartItem ,onSuccessBuy} from '../actions/user_actions.js';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -57,7 +57,7 @@ calculateTotal (cartDetail) {
   });
 
   this.setState({
-      total,
+      total: total,
       showTotal: true
   });
 }
@@ -149,7 +149,9 @@ showNoItemMessage () {
     const { total, discount, discountApplied, discountError } = this.state;
     return (  
  <div>
-                    <h1 className="componentTitles">Mi Carrito</h1>
+                     <PageTop
+          title="Mi Carrito"
+      />
                     <div className="cartCard">
                         <CartProductBlock
                             products={this.props.user}
@@ -201,15 +203,20 @@ showNoItemMessage () {
                     {
                         this.state.showTotal ?
 
-
+          <div>
           <Paypal 
             toPay={this.state.total}
             transactionError={(data)=>this.transactionError(data)}
             transactionCanceled={(data)=>this.transactionCanceled(data)}
             onSuccess={(data)=>this.transactionSuccess(data)}
           />
+          <span>Compras 100% protegidas por PayPal</span>
+          </div>
           : null 
-                    }
+                     }
+         { this.state.total < 150 ?
+            <div>Favor de agregar más de $150 a su carrito para poder pagar con PayPal y recibir envío gratis</div>
+            : null }
                     </div>
                     </div>
                     </div>

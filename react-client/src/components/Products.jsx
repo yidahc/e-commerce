@@ -238,24 +238,3 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(Products);
 
-
-  
-
-/*
-
-
-
-
-{ this.props.products ? 
-                  <div>
-    <LoadmoreCards
-                          grid={this.state.grid}
-                          limit={this.state.limit}
-                          size={this.props.products.toShopSize}
-                          products={this.props.products.toShop}
-                          loadMore={()=> this.loadMoreCards()}
-                      />
-                  </div>
-    : <h1>no items</h1> }
-
-*/
