@@ -139,12 +139,26 @@ showNoItemMessage () {
 
 
   render () {
-    const { total, discount, discountApplied, discountError } = this.state;
+    const { total, discount, discountApplied, discountError, showSuccess } = this.state;
     return (  
  <div>
-                     <PageTop
+      <PageTop
           title="Mi Carrito"
       />
+      { showSuccess ?
+      <span>
+      <div className="cart_success">
+      <FontAwesomeIcon icon={faSmile}/>
+      <div>
+          Gracias, su pago fue procesado
+      </div>
+      <div>
+          Favor de revisar su cuenta de paypal para confirmar
+      </div>
+  </div>
+       </span>
+       :
+       <span>
                     <div className="cartCard">
                         <CartProductBlock
                             products={this.props.user}
@@ -186,17 +200,7 @@ showNoItemMessage () {
                                       {discountError ? <p className= "error"> "Cupón inválido" </p> : null }
                             </div>                            
                         :
-                            this.state.showSuccess ?
-                                <div className="cart_success">
-                                    <FontAwesomeIcon icon={faSmile}/>
-                                    <div>
-                                        Gracias, su pago fue procesado
-                                    </div>
-                                    <div>
-                                        Favor de revisar su cuenta de paypal para confirmar
-                                    </div>
-                                </div>
-                            :
+
                             this.showNoItemMessage()
                         }
                     </div>
@@ -217,6 +221,8 @@ showNoItemMessage () {
                      }
                     </div>
                     </div>
+                    </span>
+      }
                     </div>
                   
     )

@@ -55,7 +55,6 @@ const Ybutton = (props) => {
         case "shadePicker":
         template = <Link
                         className="shadePicker"
-                        to={props.linkTo}
                         {...props.addStyles}
                     >  
                     {props.title}
