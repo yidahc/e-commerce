@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -d --watch",
-    "start": "nodemon server/index.js"
+    "react-dev": "webpack -d --watch",
+    "start": "node server/index.js",
+    "server-dev": "nodemon server/index.js",
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
+    "heroku-postbuild": "npm run build:prod"
   },
   "author": "Beth Johnson",
   "license": "ISC",
