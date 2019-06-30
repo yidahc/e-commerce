@@ -2,22 +2,29 @@ import { deepObjectCopy } from '../utils/formlogic.js'
  
 
 export default function(state={},action){
-    const stateCopy = deepObjectCopy(state);    
+   // const stateCopy = deepObjectCopy(state);    
     switch(action.type){
         case 'get_products_by_sales':
-            return { stateCopy, bySell: action.payload }
+            return Object.assign({}, state, { 
+                bySales: action.payload 
+            })
         case 'get_products_by_arrival':
-            return { stateCopy, byArrival:  action.payload } 
+            return Object.assign({}, state, { 
+                byArrival:  action.payload 
+            }) 
         case 'get_brands':
-            return { stateCopy, brands: action.payload }
+            return Object.assign({}, state, { 
+                brands: action.payload 
+            })
         case 'get_categories':
-            return { stateCopy, categories: action.payload }
+            return Object.assign({}, state, { 
+                categories: action.payload 
+            })
         case 'get_products_to_shop':
-            return { 
-                stateCopy,
+            return Object.assign({}, state, {
                 toShop: action.payload.articles,
                 toShopSize: action.payload.size
-             }
+             })
         default:
             return state;
     }

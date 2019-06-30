@@ -51,10 +51,6 @@ class Products extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      loading: true,
-      brands: [],
-      categories: [],
-      toShopSize: 0,
       grid:'',
       limit:20,
       skip:0,
@@ -73,27 +69,13 @@ class Products extends React.Component {
 }
 
     componentDidMount(){
-      this.props.dispatch(getBrands()).then(response =>{
-        this.setState ({
-            brands: this.props.products.brands
-        })
-      });
-      this.props.dispatch(getCategories()).then(response =>{
-        this.setState ({
-            categories: this.props.products.categories
-        })
-      });
+      this.props.dispatch(getBrands());
+      this.props.dispatch(getCategories());
       this.props.dispatch(getProductsToShop(
          this.state.skip,
          this.state.limit,
          this.state.filters
-     )).then(response =>{
-        this.setState ({
-            toShopSize: this.props.products.toShopSize,
-            toShop: this.props.products.toShop,
-            loading: false
-        })
-      });
+     ));
   };
 
  
@@ -145,11 +127,10 @@ loadMoreCards () {
       skip,
       this.state.limit,
       this.state.filters,
-      this.state.toShop
+      this.props.products.toShop
   )).then(()=>{
       this.setState({
           skip: skip,
-          toShop: this.props.products.toShop
       })
   })
 }
@@ -161,8 +142,8 @@ handleGrid () {
 }
 
   render () {
-      console.log(this.props.products)
-      console.log(this.state)
+    const products = this.props.products;
+
     return (  
       <div>
       <PageTop
@@ -171,18 +152,17 @@ handleGrid () {
       <div className="container">
           <div className="shop_wrapper">
               <div className="left">
-              { !this.state.loading ? 
                <div>
                   <CollapseCheckbox
                       initState={true}
                       title="Marcas"
-                      list={this.state.brands}
+                      list={products.brands}
                       handleFilters={(filters)=> this.handleFilters(filters,'brand')}
                   />
                   <CollapseCheckbox
                       initState={false}
                       title="Categorias"
-                      list={this.state.categories}
+                      list={products.categories}
                       handleFilters={(filters)=> this.handleFilters(filters,'category')}
                   />
                    <CollapseRadio
@@ -192,8 +172,7 @@ handleGrid () {
                       handleFilters={(filters)=> this.handleFilters(filters,'price')}
                   />
                   </div>
-                : null
-              }
+
               </div>
               <div className="right">
                   <div className="shop_options">
@@ -217,8 +196,8 @@ handleGrid () {
     <LoadmoreCards
                           grid={this.state.grid}
                           limit={this.state.limit}
-                          size={this.state.toShopSize}
-                          products={this.state.toShop}
+                          size={products.toShopSize}
+                          products={products.toShop}
                           loadMore={()=> this.loadMoreCards()}
                       />
                   </div>

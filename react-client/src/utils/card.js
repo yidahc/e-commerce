@@ -14,6 +14,7 @@ class Card extends React.Component {
         let path = "/images/"
         if(images.length > 0){
             return path.concat(images[0])
+            //images[0].url when coming from external cloud
         } else {
             return '/images/product1.jpg'
         } 
@@ -24,6 +25,8 @@ class Card extends React.Component {
 
     render() {
         const props = this.props;
+        //when you change to grid on products page, it adds a string "grid bars" (secondary class) so every component is restiled to grid mode
+        //otherwise it is an empty string and class is just 'card_item_wrapper'
         return (
             <div className={`card_item_wrapper ${props.grid}`}>
             <img style= {{width: "200px", height: "200px"}}
@@ -46,8 +49,10 @@ class Card extends React.Component {
                     { props.category.name === "Bases de maquillaje" ?
                          <Ybutton 
                          type="shadePicker"
-                         altClass="card_link"
                          title="Elegir Tono"
+                         runAction={()=>{
+                           console.log('shadepicking not ready')
+                        }}
                         />
                         : null
                          }
@@ -55,7 +60,6 @@ class Card extends React.Component {
                         <div className="button_wrapp">
                             <Ybutton
                                 type="default"
-                                altClass="card_link"
                                 title="Ver Producto"
                                 linkTo={`/product_detail/${props._id}`}
                             />

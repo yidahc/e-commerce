@@ -168,13 +168,13 @@ showNoItemMessage () {
                      
 
                     <div className= "cartBottom">
-                      { this.state.showTotal && total > 200 ?
+                      { this.state.showTotal && total >= 200 ?
                           <div className="payDisclaimer">Ingrese dirección de envío al pagar por PayPal para válidar garantía de entrega.</div>
                           : 
                           this.state.showTotal && total < 200 ?
                             <div>Agregue más de $200 a su carrito para poder pagar con PayPal y recibir envío gratis</div>
                             : null }
-                        { this.state.showTotal ?
+                        { this.state.showTotal && total >= 200 ?
                             <div>
                                 <div className="user_cart_sum">
                                     <div>
@@ -199,14 +199,15 @@ showNoItemMessage () {
                                       {discountApplied ? <p className= "error"> "Descuento ha sido aplicado" </p>: null }
                                       {discountError ? <p className= "error"> "Cupón inválido" </p> : null }
                             </div>                            
-                        :
-
+                        : this.state.showTotal && total < 200 ?
+                          null
+                          :
                             this.showNoItemMessage()
                         }
                     </div>
                     <div className= "cartBottom">
                     {
-                        this.state.showTotal ?
+                        this.state.showTotal && total >= 200 ?
 
           <div>
           <Paypal 

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getProductsBySales(){
     //?sortBy=sold&order=desc&limit=100
-    const request = axios.get('/api/product/articles?sortBy=sold&order=desc&limit=10&skip=5')
+    const request = axios.get('/api/product/articles?sortBy=sold&order=desc&limit=4&skip=3')
                     .then(response => response.data);
 
     return {

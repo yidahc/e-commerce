@@ -10,35 +10,28 @@ const Ybutton = (props) => {
         switch(props.type){
             case "default":
                 template = <Link
-                    className="link_default"
+                    className='link_default'  
                     to={props.linkTo}
                     {...props.addStyles}
                 >
                     {props.title}
                 </Link>
             break;
+           
             case "bag_link":
             template = 
-            <span>
-            <Button  onClick={()=>{
-                props.runAction();
-            }} animated='vertical'>
-              <Button.Content hidden> Agregar </Button.Content>
-              <Button.Content visible>
-              <Icon name='shop' />
-              </Button.Content>
-            </Button>
-          </span>  
-               /* <div className="bag_link"
-                    onClick={()=>{
+                <span>
+                    <Button  onClick={()=>{
                         props.runAction();
-                    }}
-                >
-                    <FontAwesomeIcon
-                        icon={faShoppingBag}
-                    />
-                </div> */
+                    }} animated='vertical'>
+                        <Button.Content hidden> Agregar </Button.Content>
+                        <Button.Content visible>
+                        <Icon name='shop' />
+                        </Button.Content>
+                    </Button>
+                </span>  
         break;
+        
         case "add_to_cart_link":
                 template =   
                      <div className="add_to_cart_link"
@@ -52,15 +45,20 @@ const Ybutton = (props) => {
                         Add to cart
                     </div>
             break;
+        
         case "shadePicker":
-        template = <Link
+        template = <div
                         className="shadePicker"
-                        {...props.addStyles}
+                        onClick={()=>{
+                            props.runAction();
+                        }}
                     >  
                     {props.title}
-                    </Link>
+                    </div>
         break;
-            default: 
+            
+        
+        default: 
                 template = ''; 
         }
         return template
