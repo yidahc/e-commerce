@@ -5,13 +5,17 @@ export default function(state={}, action){
     const newState = deepObjectCopy(state);
     switch(action.type){
         case 'register_user':
-            return { newState, register: action.payload }
+            return Object.assign({}, state, {
+                 register: action.payload })
         case 'login_user':
-            return { newState, loginSuccess: action.payload }
+            return Object.assign({}, state, {
+                 loginSuccess: action.payload })
         case 'auth_user':
-            return { newState, userData: action.payload }
+            return Object.assign({}, state, {
+                 userData: action.payload })
         case 'logout_user':
-            return { newState }
+            return Object.assign({}, state, {
+                logoutSuccess: action.payload })
         case 'add_to_cart':
             let teehee = newState;
             teehee.userData.cart = action.payload;

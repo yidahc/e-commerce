@@ -49,6 +49,7 @@ class Header extends React.Component {
     this.logoutHandler = this.logoutHandler.bind(this);
     this.defaultLink = this.defaultLink.bind(this);
     this.showLinks = this.showLinks.bind(this);
+    this.renderLoginLogout = this.renderLoginLogout.bind(this);
   }
   
   handleClick () {
@@ -56,11 +57,10 @@ class Header extends React.Component {
   }
 
   logoutHandler () {
-    this.props.dispatch(logoutUser()).then(response =>{
+    this.props.dispatch(logoutUser()).then(response =>{        
+        if(response.payload.success){
             this.props.history.push('/')
         }
-    ) .catch (err => {
-        this.props.history.push('/')
     })
   }
 
@@ -85,12 +85,6 @@ class Header extends React.Component {
                         list.push(item)
                     }
             });
-        } else {
-            this.state.links.forEach((item)=>{
-                if(item.public === true){
-                    list.push(item)
-                }
-            })
         }
 
         return list.map((item,i)=>{
@@ -98,6 +92,38 @@ class Header extends React.Component {
         })
     };
 
+    renderLoginLogout () { 
+        if (this.props.user.userData) {
+            if (this.props.user.userData.isAuth) {
+                return(
+                    <span className="headerSections2 loginRegister">
+                        <div>
+                        <button className="dropbtn" onClick={()=> this.logoutHandler()}> Cerrar Session </button>
+                        </div>
+                        <span className="headerSections2" >
+                        <div>
+                        <span style={{color:"#b46875", marginRight:"6px"}}>{this.props.user.userData.cart ? this.props.user.userData.cart.reduce((a,e)=>a+e.quantity, 0):0}</span>
+                        <Link className="link" to='/Cart'>
+                        Carrito de Compras
+                        </Link>
+                        </div>
+                        </span>
+                    </span>
+                )
+            } else {
+                return(
+                    <span className="headerSections2 loginRegister" >
+                    <div>
+                    <Login />
+                    </div>
+                    <div>
+                    <Register />
+                    </div>
+                </span> 
+                )
+            }
+        }
+    }
 
     
     render() {
@@ -114,30 +140,7 @@ class Header extends React.Component {
                 <a href="/"> Narzisse</a>
                  </span>
                     <span>
-                         { !this.props.user.userData ||!this.props.user.userData.isAuth ?
-                            <span className="headerSections2 loginRegister" >
-                            <div>
-                            <Login />
-                            </div>
-                            <div>
-                            <Register />
-                            </div>
-                            </span>
-                            : 
-                          <span className="headerSections2 loginRegister">
-                            <div>
-                             <button className="dropbtn" onClick={()=> this.logoutHandler()}> Cerrar Session </button>
-                             </div>
-                             <span className="headerSections2" >
-                            <div>
-                             <span style={{color:"#b46875", marginRight:"6px"}}>{this.props.user.userData.cart ? this.props.user.userData.cart.reduce((a,e)=>a+e.quantity, 0):0}</span>
-                              <Link className="link" to='/Cart'>
-                             Carrito de Compras
-                             </Link>
-                            </div>
-                             </span>
-                          </span>
-                         }   
+                         { this.renderLoginLogout() }   
                     </span>
                     <div></div>
                     <div className="PageTitle promo">Envíos Gratis en Compras Mayores de $200</div>
