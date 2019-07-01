@@ -71,15 +71,10 @@ class Login extends React.Component {
       let formIsValid = isFormValid(this.state.formdata, 'login')
       if (formIsValid) {
         this.props.dispatch(loginUser(dataToSubmit)).then(response => {
-          if (response.payload.loginSuccess) {
-            this.setState({
-              formError: false,
-              formSuccess: true,
-              showForm: !this.state.showForm,
-            });            
+          if (response.payload.loginSuccess) {        
             this.props.history.push('/Products')
           } else {
-            this.setState ({
+            this.setState ({  
               formError: true
             })
           }
