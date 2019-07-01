@@ -9,7 +9,7 @@ const app = express();
 
 require('dotenv').config();
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE)
+mongoose.connect(process.env.MONGOLAB_PINK_URI)
 
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
